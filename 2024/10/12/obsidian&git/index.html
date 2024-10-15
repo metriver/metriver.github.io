@@ -19,7 +19,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2024/10/12/obsidian + git/"/>
+    <link rel="canonical" href="http://example.com/2024/10/12/obsidian&git/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -27,12 +27,12 @@
         <meta name="description" content="使用obsidian及其插件实现hexo博客的自动部署~">
 <meta property="og:type" content="article">
 <meta property="og:title" content="obsidian + git 实现自动部署">
-<meta property="og:url" content="http://example.com/2024/10/12/obsidian%20+%20git/index.html">
+<meta property="og:url" content="http://example.com/2024/10/12/obsidian&git/index.html">
 <meta property="og:site_name" content="River">
 <meta property="og:description" content="使用obsidian及其插件实现hexo博客的自动部署~">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-12T02:01:07.000Z">
-<meta property="article:modified_time" content="2024-10-12T02:51:21.131Z">
+<meta property="article:modified_time" content="2024-10-15T07:21:00.569Z">
 <meta property="article:author" content="metriver">
 <meta property="article:tag" content="网站搭建">
 <meta name="twitter:card" content="summary">
@@ -573,8 +573,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-10-12 10:51:21</span>
-            <span class="mobile">2024-10-12 10:51:21</span>
+            <span class="desktop">2024-10-15 15:21</span>
+            <span class="mobile">2024-10-15 15:21</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -633,12 +633,15 @@
 <h2 id="文章管理"><a href="#文章管理" class="headerlink" title="文章管理"></a>文章管理</h2><h3 id="自定义文章生成路径"><a href="#自定义文章生成路径" class="headerlink" title="自定义文章生成路径"></a>自定义文章生成路径</h3><p><code>ctrl+，</code>打开设置 &gt; Files &amp; Links &gt; 存放新建笔记文件夹 &gt; <code>source/_posts</code></p>
 <h3 id="快速插入Front-Matter模板"><a href="#快速插入Front-Matter模板" class="headerlink" title="快速插入Front-Matter模板"></a>快速插入Front-Matter模板</h3><p>设置 &gt; 核心插件 &gt;  模板 &gt; 打开模板设置<br>在根目录创建一个<code>template</code>文件夹，让模板保存在此<br>设置日期格式 <code>YYYY-MM-DD HH:mm:ss</code><br>编写模板:<br>比如这样：</p>
 <div class="highlight-container" data-rel="Markdown"><figure class="iseeu highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123;title&#125;&#125;</span><br><span class="line">date: &#123;&#123;date&#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">thumbnail: </span><br><span class="line">categories:</span><br><span class="line">sticky: </span><br><span class="line"><span class="section">excerpt: </span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure></div>
+
 <h1 id="git插件的使用"><a href="#git插件的使用" class="headerlink" title="git插件的使用"></a>git插件的使用</h1><h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><p>在obsidian中，关闭安全模式。<br>在社区插件中搜索Git，下载Git插件。</p>
 <h2 id="配置仓库"><a href="#配置仓库" class="headerlink" title="配置仓库"></a>配置仓库</h2><p>在GitHub上创建一个<strong>空</strong>仓库，readme文件也不要有。私人仓库即可~<br>在根目录bash一下，输入</p>
 <div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init                 <span class="comment">#初始化文件夹  </span></span><br><span class="line">git add .                <span class="comment">#添加文件到缓存区域  </span></span><br><span class="line">git commit -m <span class="string">&quot;文件描述&quot;</span>  <span class="comment">#提交更改并添加更改信息  </span></span><br><span class="line">git remote add origin https://github.com/xxx/note.git （SSH或着HTTP的仓库链接）  </span><br><span class="line">git push -u origin main （branch是什么就是什么，一般默认是main） <span class="comment">#推送到仓库存储</span></span><br></pre></td></tr></table></figure></div>
+
 <p>完成上述，obsidian中的Git插件就可以正常使用啦，同时在<code>git init</code>后，目录下出现了<code>.git</code>文件(看不见就是被隐藏了)~<br>tips 可以设置每X分钟自动备份文件到github仓库上哦</p>
 <h2 id="配置Git-Hook"><a href="#配置Git-Hook" class="headerlink" title="配置Git Hook"></a>配置Git Hook</h2><p>打开<code>.git/hook</code>，新建<code>pre_commit</code>文件（无后缀）写入一下代码：</p>
 <div class="highlight-container" data-rel="Sh"><figure class="iseeu highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#进入博客所在的根目录进行hexo操作 这里基础目录与`.git`同目录</span></span><br><span class="line">  </span><br><span class="line">hexo cl  </span><br><span class="line">  </span><br><span class="line">hexo g  </span><br><span class="line">  </span><br><span class="line">hexo d  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> [ $? -ne 0 ]; <span class="keyword">then</span>  </span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;Hexo generate or deploy failed. Commit aborted.&quot;</span>  </span><br><span class="line">  <span class="built_in">exit</span> 1  </span><br><span class="line"><span class="keyword">fi</span>  </span><br><span class="line">  </span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure></div>
+
 <p>恭喜你 现在就可以自动部署啦！<br>只需要写完文章 等待obisidian自动部署就好啦~（当然这需要设置自动上传，否则需要你动动鼠标点一点）</p>
 <h1 id="Last"><a href="#Last" class="headerlink" title="Last"></a>Last</h1><p>实现的逻辑 obsidian仓库上传到GitHub时会触发配置的Hook，这时会运行<code>pre_commit</code>文件，实现hexo的–cl，–g，–d<br>配置图片的事情 下次吧~</p>
 
@@ -655,11 +658,11 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-10-12 10:51:21
+                    :</strong> 2024-10-15 15:21:00
             </li>
         
         <li>
-            <strong>Link:</strong> https://redefine.ohevan.com/2024/10/12/obsidian + git/
+            <strong>Link:</strong> https://redefine.ohevan.com/2024/10/12/obsidian&amp;git/
         </li>
         <li>
             <strong>
