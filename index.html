@@ -251,62 +251,54 @@
 <main class="page-container" id="swup">
 
     
-        
-    <style>
-        .home-banner-container {
-            background: none !important;
-        }
-        .home-article-item,
-        .sidebar-links,
-        .sidebar-content,
-        a.page-number,
-        a.extend,
-        .sidebar-links .links:hover,
-        .right-bottom-tools,
-        footer.footer {
-            background-color: var(--background-color-transparent-80) !important;
-        }
-        .right-bottom-tools:hover,
-        a.page-number:hover,
-        a.extend:hover {
-            background-color: var(--primary-color) !important;
-        }
-        .site-info,
-        .home-article-sticky-label {
-            background-color: var(--background-color-transparent-15) !important;
-        }
-        .home-article-sticky-label {
-            backdrop-filter: none !important;
-        }
-    </style>
-    <div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
-        <img src="/img/mdtest.png" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
-        <img src="https://wallpapercave.com/wp/wp9077184.jpg" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
-    </div>
+        $temp-title-fs = hexo-config('home_banner.text_style.title_size')
+$title-font-size = $temp-title-fs ? convert($temp-title-fs) : 2.8rem
+$temp-subtitle-fs = hexo-config('home_banner.text_style.subtitle_size')
+$subtitle-font-size = $temp-subtitle-fs ? convert($temp-subtitle-fs) : 1.4rem
+$temp-line-height = hexo-config('style.first_screen.line_height')
+$line-height = $temp-line-height ? $temp-line-height : 1.2
+$home-banner-icon-size = 1.6rem
 
+@import '../../common/variables'
 
-<div class="home-banner-container flex justify-center items-center transition-fade relative">
-    
-    <div class="content mt-8 flex flex-col justify-center items-center">
-        <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
-        
-        >
-            River Forever
-            
-            
-                <p><i id="subtitle"></i></p>
-            
-        </div>
-        
-    </div>
-    <script>
-        const scrollToMain = ()=> {
-            console.log('scroll');
-            const target = document.querySelector('.main-content-container');
-            target.scrollIntoView({ behavior: 'smooth'});
-        }
-    </script>
-</div>
+.home-banner-background
+  //background var(--home-banner-img) center center / cover no-repeat
+  transition filter 0.3s ease
+
+.home-banner-container
+  font-family 'Chillax-Variable', sans-serif
+  position relative
+  box-sizing border-box
+  width 100%
+  min-height 100vh
+  overflow hidden
+  will-change transform
+
+  .content
+    position relative
+    box-sizing border-box
+    min-height 90vh
+
+    .description
+      font-size $title-font-size
+      line-height $line-height
+      color var(--home-banner-text-color)
+
+      p
+        margin 0
+        opacity 0.9
+        font-family 'Geist Variable', sans-serif
+        font-weight 350
+
+        i
+          font-size $subtitle-font-size
+          font-style normal
+
+        span
+          font-size: $subtitle-font-size * 1.05
+
+      +redefine-tablet()
+        font-size: $title-font-size * 0.9
     
 
     <div class="main-content-container">
@@ -561,15 +553,15 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -634,15 +626,15 @@
 </div>
                 <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
         <div class="label text-third-text-color text-sm">Tags</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">3</div>
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -735,6 +727,84 @@
     </div>
 
     <a href="/2024/07/02/hello%20river/">Read more<span class="seo-reader-text">Hello River</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2024/11/30/%E7%A7%91%E7%A0%94%E8%AF%BE%E5%A0%82%20%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A/">
+                            有关叶片排序问题的研究
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            <p>有关叶片排序问题的研究</p>
+
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Nov 30 2024 00:00:00 GMT+0800">
+                
+                    2024-11-30
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">遗传算法</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E6%9D%BE%E5%BC%9B/">拉格朗日松弛</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E6%8C%87%E9%92%88%E7%BD%91%E7%BB%9C/">指针网络</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2024/11/30/%E7%A7%91%E7%A0%94%E8%AF%BE%E5%A0%82%20%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A/">Read more<span class="seo-reader-text">有关叶片排序问题的研究</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -1183,7 +1253,7 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        7 posts in total
+                        8 posts in total
                     </span>
                     
                 </p>
