@@ -648,47 +648,36 @@ mjx-container[display="true"] + br {
             <div class="main-content">
 
                 
-                    <div class="tag-container">
-	<div class="tag-name">
-		<i class="fa-solid fa-tag"></i>&nbsp;拉格朗日松弛
-	</div>
-	<div class="tag-post-list">
-		
-<div class="archive-list-container">
-    
-        <section class="archive-item mb-spacing-unit last:mb-0">
-            <div class="archive-item-header flex flex-row items-center mb-2">
-                <span class="archive-year font-semibold text-3xl mr-2">2024</span>
-                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">1</span>
-            </div>
-            
-            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
-                
-                    
-                    
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-30'>
-                    
-                    <a href="/2024/11/30/%E7%A7%91%E7%A0%94%E8%AF%BE%E5%A0%82%20%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">有关叶片排序问题的研究</span>
-                    </a>
-                    
-                
-                </li> <!-- Ensure the last item is properly closed -->
-            </ul>
-        </section>
-    
-</div>
+                    @import '../common/variables'
 
-	</div>
-</div>
+$tag-name-font-size = 3rem
 
-<div class="tag-paginator">
-	<div class="paginator">
-    <span class="page-number current">1</span>
-</div>
+.tag-container
+  redefine-container(
+    false,
+    0,
+    0,
+    30px,
+    30px
+  )
 
-</div>
+  .tag-name
+    color var(--second-text-color)
+    font-size $tag-name-font-size
+
+    i
+      color var(--second-text-color)
+
+    +redefine-tablet()
+      font-size: $tag-name-font-size * 0.9
+
+    +redefine-mobile()
+      font-size: $tag-name-font-size * 0.8
+
+    font-weight 600
+    padding-bottom 20px
+    margin-bottom $spacing-unit
+    border-bottom 1px solid var(--shadow-color-1)
 
 
                 
