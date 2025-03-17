@@ -1,0 +1,33 @@
+# 站点信息
+site_name: Studying River
+site_url: https://example.com/
+site_author: Metriver
+site_description: notes for studying
+
+# 主题设置
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.top
+
+# 部署设置
+site_url: https://metriver.github.io/repository/
+repo_url: https://github.com/metriver/repository
+edit_uri: edit/main/docs/
+
+# 导航设置
+# nav:
+#   - 首页: index.md
+#   - 指南: 
+#     - guide/index.md
+#     - 安装: guide/install.md
+#     - 使用: guide/usage.md
+
+# # Markdown 扩展
+# markdown_extensions:
+#   - attr_list
+#   - md_in_html
+#   - toc:
+#       permalink: true
