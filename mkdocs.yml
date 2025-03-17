@@ -13,8 +13,8 @@ theme:
     - navigation.top
 
 # 部署设置
-site_url: https://metriver.github.io/repository/
-repo_url: https://github.com/metriver/repository
+site_url: https://metriver.github.io/
+repo_url: https://github.com/metriver/metriver.github.io
 edit_uri: edit/main/docs/
 
 # 导航设置
