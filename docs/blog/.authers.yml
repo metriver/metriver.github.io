@@ -1,0 +1,5 @@
+authors:
+  Metriver:
+    name: metriver    # Author name
+    description: Keep Fool # Author description
+    avatar: assets/avatar.jpg       # Author avatar
