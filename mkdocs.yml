@@ -65,36 +65,31 @@ repo_url: https://github.com/metriver/metriver.github.io # 右上角点击跳转
 repo_name: Mkdocs-Metriver # 右上角的名字
 # [Navigtion]
 nav:
-  - Foe: index.md
+  - Home: 
+    - index.md
+    - links: link.md
   - Blog:
-      - blog\index.md
+      - blog/index.md
   - Learn:
-    - Learn\index.md
+    - Learn/index.md
     - Papers:
-      - 软件与编程: Learn\papers\软件编程试卷.md
+      - 软件与编程: Learn/papers/软件编程试卷.md
   - Tech:
-    - Tech\index.md
+    - Tech/index.md
     - Web_construct:
-      - obsidian: Tech\Blog_Construct\obsidian&git.md
+      - obsidian: Tech/Blog_Construct/obsidian&git.md
   # - 留言板: liuyanban.md
   - Essays: 
-      - Essays\index.md
+      - Essays/index.md
       - Travel:
-        - JiNan: Essays\Travel\jinan.md
-        - Beijing: Essays\Travel\beijing.md
-        - xian: Essays\Travel\xian.md
+        - JiNan: Essays/Travel/jinan.md
+        - Beijing: Essays/Travel/beijing.md
+        - xian: Essays/Travel/xian.md
       - Nag:
-        - Talk1: Essays\Nag\talk1.md
-        - Talk2: Essays\Nag\talk2.md
+        - Talk1: Essays/Nag/talk1.md
+        - Talk2: Essays/Nag/talk2.md
   - Tags: tag.md
-  - Links: link.md
-  # - Links: about/link.md
-  #     - 友链: about/link.md
-  # - 关于:
-  #     - 作者个人简介: about/geren.md
-  #     - 功能测试: about/test.md
-  # - 个人博客: https://wcowin.work
-  # - 使用本主题: https://github.com/new?template_name=Mkdocs-Wcowin&template_owner=Wcowin
+  
 
 copyright: Copyright &copy; 2023~2025 Metriver All Rights Reserved. # 左下角的版权声明
 extra:

@@ -74,7 +74,7 @@
                </div>
             </div>
             <div class="card">
-               <img class="ava" src=""/>
+               <img class="ava" src="https://s2.loli.net/2025/03/19/efFOsAY2MdwDH7S.jpg"/>
                <div class="card-header">
                   <div>
                      <a href="https://awslasasd.github.io/" target=“_blank”>Twinkle's blog</a>
