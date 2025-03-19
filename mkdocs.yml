@@ -7,7 +7,7 @@ site_author: Metriver # your name
 #[UI]
 theme:
   name: material
-  # custom_dir: docs/overrides #覆写路径
+  custom_dir: docs/overrides #覆写路径
   # font: #谷歌字体，自行搜索
   #   text: Bitter  #文本字体
   #   code: Roboto Mono  #代码字体
@@ -65,35 +65,34 @@ repo_url: https://github.com/metriver/metriver.github.io # 右上角点击跳转
 repo_name: Mkdocs-Metriver # 右上角的名字
 # [Navigtion]
 nav:
-  - Home: 
-    - index.md
-    - links: link.md
+  - Home:
+      - index.md
+      - links: link.md
   - Blog:
       - blog/index.md
   - Learn:
-    - Learn/index.md
-    - Papers:
-      - 软件与编程: Learn/papers/软件编程试卷.md
+      - Learn/index.md
+      - Papers:
+          - 软件与编程: Learn/papers/软件编程试卷.md
   - Tech:
-    - Tech/index.md
-    - Web_construct:
-      - obsidian: Tech/Blog_Construct/obsidian&git.md
+      - Tech/index.md
+      - Web_construct:
+          - obsidian: Tech/Blog_Construct/obsidian&git.md
   # - 留言板: liuyanban.md
-  - Essays: 
+  - Essays:
       - Essays/index.md
       - Travel:
-        - JiNan: Essays/Travel/jinan.md
-        - Beijing: Essays/Travel/beijing.md
-        - xian: Essays/Travel/xian.md
+          - JiNan: Essays/Travel/jinan.md
+          - Beijing: Essays/Travel/beijing.md
+          - xian: Essays/Travel/xian.md
       - Nag:
-        - Talk1: Essays/Nag/talk1.md
-        - Talk2: Essays/Nag/talk2.md
+          - Talk1: Essays/Nag/talk1.md
+          - Talk2: Essays/Nag/talk2.md
   - Tags: tag.md
-  
 
 copyright: Copyright &copy; 2023~2025 Metriver All Rights Reserved. # 左下角的版权声明
 extra:
-  generator: false  #是否删除页脚显示“使用 MkDocs 材料制造”
+  generator: false #是否删除页脚显示“使用 MkDocs 材料制造”
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/metriver
@@ -104,7 +103,6 @@ extra:
 #   analytics:
 #     provider: google #谷歌分析
 #     property: ##如果你 clone 了my模板，请将这个修改为你的
-
 
 plugins:
   - search #搜索配置
@@ -186,6 +184,8 @@ markdown_extensions:
           class: mermaid
           format:
             !!python/name:pymdownx.superfences.fence_code_format # 代码块高亮插件
+
+
   - pymdownx.arithmatex: # latex支持
       generic: true
   - toc:
@@ -207,7 +207,7 @@ markdown_extensions:
 
 extra_javascript:
   # - javascripts/extra.js #自定义javascript
-  - https://cdn.jsdelivr.net/gh/Wcowin/Wcowin.github.io@main/docs/javascripts/extra.js  # extra的cdn
+  - https://cdn.jsdelivr.net/gh/Wcowin/Wcowin.github.io@main/docs/javascripts/extra.js # extra的cdn
   - javascripts/mathjax.js #Latex支持
   - https://polyfill.io/v3/polyfill.min.js?features=es6 #Latex支持
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js #Latex支持
@@ -230,6 +230,5 @@ extra_css:
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css #字体
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@1.0.0/style.css  #字体
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css  #字体
-
 # hooks:
 #   - docs/overrides/hooks/socialmedia.py

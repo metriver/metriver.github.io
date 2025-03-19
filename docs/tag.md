@@ -5,6 +5,7 @@ hide:
   #- toc #显示左
   - footer
   - feedback
+comments: true
 ---
 <!-- # Tags -->
 
