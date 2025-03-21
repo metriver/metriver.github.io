@@ -2,10 +2,12 @@
 
 <center><font class="custom-font ml3">好好学习 天天向上</font></center>
 <script src="https://cdn.statically.io/libs/animejs/2.0.2/anime.min.js"></script>
+
+
 <style>
     .custom-font {
     font-size: 38px; /* 默认字体大小为8px */
-    color: #757575;
+    color:rgb(6, 70, 149);
 }
 @media (max-width: 768px) { /* 假设768px及以下为移动端 */
     .custom-font {

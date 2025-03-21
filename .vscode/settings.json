@@ -1,0 +1,10 @@
+{
+    // md_template_set
+    "[markdown]":  {
+      "editor.quickSuggestions": {
+          "comments": "on",
+          "strings": "on",
+          "other": "on"
+      }
+  }
+}
