@@ -345,6 +345,15 @@ int isQueueFull() { return (rear + 1) % MAXSIZE == front; }
 
 ### 树（二叉树）
 
+#### 0.性质
+
+- 非空二叉树(NEDT) 有n个节点 则有n-1个分支
+- NEDT 第i层最多有 $ 2^{i-1} $个结点
+- NEDT 深度h 最多有$2^h-1$个结点
+- NEDT有n个叶结点,有N个度为2的结点,则 n=N+1
+- NEDT n个结点 h=$[log_2^n]+1$(向下取整)
+- 
+
 #### 1. 定义节点
 ```c
 typedef struct TreeNode
@@ -386,7 +395,7 @@ TreeNode *search(TreeNode *root, int data)
 }
 ```
 
-#### 遍历方法
+#### 5.遍历方法
 ```c
 // 前序遍历
 void preOrder(TreeNode *root)
