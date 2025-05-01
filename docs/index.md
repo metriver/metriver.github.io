@@ -1,8 +1,8 @@
 #  
 
-<center><font class="custom-font ml3">好好学习 天天向上</font></center>
-<script src="https://cdn.statically.io/libs/animejs/2.0.2/anime.min.js"></script>
-
+<!-- <center><font class="custom-font ml3">好好学习 天天向上</font></center>
+<script src="https://cdn.statically.io/libs/animejs/2.0.2/anime.min.js"></script> -->
+好好学习 天天向上
 
 <style>
     .custom-font {
