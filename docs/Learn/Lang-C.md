@@ -170,6 +170,14 @@ if (ch >= '0' && ch <= '9')
 }
 ```
 
+### 表达式
+
+中缀表达式 最常用
+
+前缀表达式 从右往左 遇到数字压栈 遇到运算符 弹栈
+
+后缀表达式 从左往右...
+
 ---
 
 ## 数据结构
@@ -343,17 +351,20 @@ int isQueueFull() { return (rear + 1) % MAXSIZE == front; }
 
 ---
 
-### 树（二叉树）
+### 树
 
-#### 0.性质
+#### 0.性质&概念
 
 - 非空二叉树(NEDT) 有n个节点 则有n-1个分支
 - NEDT 第i层最多有 $ 2^{i-1} $个结点
 - NEDT 深度h 最多有$2^h-1$个结点
 - NEDT有n个叶结点,有N个度为2的结点,则 n=N+1
+> 拓展:$ n_0 = \sum_{i=1}^m(m-1)n_m   \\m是bt的度 $
 - NEDT n个结点 h=$[log_2^n]+1$(向下取整)
-- 
-
+- 树转二叉树：兄弟节点连线；删除除左孩子外的所有结点连线
+- 树林转二叉树：先把数量中的树转化为二叉树；再从最后的二叉树开始依次作为前一个树的右子树
+- 哈夫曼树：特点：没有度为1的结点  构造最小带权路: 把权看作树林，每次把权最小的两棵树合成一个二叉树，权相加放回树林，重复操作
+- 前序/后序遍历 定根节点 在中序遍历中找到该结点 左右分别为左右子树，重复操作
 #### 1. 定义节点
 ```c
 typedef struct TreeNode
@@ -365,6 +376,7 @@ typedef struct TreeNode
 ```
 
 #### 2. 创建节点
+有时候可以不单独列出 直接放在插入函数中构造newnode
 ```c
 TreeNode *createNode(int data)
 {
@@ -377,18 +389,18 @@ TreeNode *createNode(int data)
 
 #### 3. 插入节点（二叉搜索树）
 ```c
-TreeNode *insert(TreeNode *root, int data)
+TreeNode *insertBST(TreeNode *root, int data)
 {
     if (!root) return createNode(data);
-    if (data < root->data) root->left = insert(root->left, data);
+    if (root->data > data) root->left = insert(root->left, data);
     else root->right = insert(root->right, data);
     return root;
 }
 ```
 
-#### 4. 查找节点
+#### 4. 查找节点(BST)
 ```c
-TreeNode *search(TreeNode *root, int data)
+TreeNode *searchBST(TreeNode *root, int data)
 {
     if (!root || root->data == data) return root;
     return search(data < root->data ? root->left : root->right, data);
@@ -424,6 +436,64 @@ void postOrder(TreeNode *root)
         postOrder(root->left);
         postOrder(root->right);
         printf("%d ", root->data);
+    }
+}
+```
+#### 6.对于值为x的有关处理 
+```C
+int op_x(btree *root, datatype x)
+{
+    // null 理解为假 即没有找到x
+    if (root == NULL)
+    {
+        return 1;
+    }
+    // 找到x 
+    if (root->data == x&&hight!=1)
+    {
+        // 处理
+    }
+
+// 如果是BST可以如下操作 
+//    else if (x < root->data)
+//    {
+//        return heightofx(root->lchild, x, hight + 1);
+//    }
+//    else
+//    {
+//        return heightofx(root->rchild, x, hight + 1);
+//    }
+
+    // 左子树寻找
+        int left = op_x(root->lchild, x);
+        if (leftDepth != 1)//此处说明找到了 也就是不假 != data when case null
+        {
+         //    操作
+         return //something
+        }
+    
+    //  右子树寻找 无论找没找到也要返回
+        int right = op_x(root->rchild, x);
+        return //something 
+}
+```
+
+#### 7.叶节点处理
+```C
+void findleaf(btree *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    if (root->lchild == NULL && root->rchild == NULL)
+    {
+        // 处理叶节点
+    }
+    else
+    {
+        findleaf(root->lchild);
+        findleaf(root->rchild);
     }
 }
 ```

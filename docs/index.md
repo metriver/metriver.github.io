@@ -25,17 +25,18 @@
 
     ---
 
-    - [Beijing](Essays/Travel/beijing.md)
+    - [C语言](Learn/Lang-C.md)
     - [Jinan](Essays/Travel/jinan.md)
 
     
     
--   :simple-aboutdotme:{ .lg .middle } __others__
-
+-   :octicons-star-fill-16:{ .lg .middle } __u want to konw__
+<!-- :simple-aboutdotme: -->
     ---
 
     <!-- - [留言板](waline.md) -->
     - [Blogger](blog/index.md)  
+    - [About Me]()
     <!-- - [:octicons-arrow-right-24: 了解我](about/geren.md)[^see-how-much-I-love-you] -->
 
 </div>
