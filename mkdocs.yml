@@ -101,8 +101,8 @@ extra:
       link: https://space.bilibili.com/437493260
     - icon: fontawesome/regular/envelope #联系方式图标
       link: mailto:<bronze-age@qq.com> #邮件联系方式
-    - icon: "simple-icons:steam"  # 使用 Iconify 格式
-      link: "https://store.steampowered.com/"
+    - icon: fontawesome/brands/steam  # 使用 Iconify 格式
+      link: https://store.steampowered.com/
     
 #   analytics:
 #     provider: google #谷歌分析
