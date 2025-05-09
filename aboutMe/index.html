@@ -1313,209 +1313,154 @@
   
 
 
-  <h1>aboutMe</h1>
-
-<!-- 以下是完整的自包含MD文件内容 -->
-
 <div style="display: none">
 <style>
-/* Google Material Design 风格 */
 :root {
-  --primary-color: #4285f4;
-  --secondary-color: #34a853;
-  --accent-color: #fbbc05;
-  --text-color: #202124;
-  --bg-color: #f8f9fa;
+  --primary: #1a73e8;
+  --surface: #ffffff;
+  --border: #dadce0;
+  --text-primary: #202124;
+  --text-secondary: #5f6368;
 }
 
 * {
+  margin: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+  <!-- font-family: 'Google Sans', 'Noto Sans SC', sans-serif; -->
 }
 
 body {
-  margin: 0;
-  padding: 20px;
-  background: var(--bg-color);
-  color: var(--text-color);
-  line-height: 1.6;
+  background: #f8f9fa;
+  line-height: 1.5;
+  color: var(--text-primary);
+  padding: 2rem 1rem;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
-/* 卡片式设计 */
-.card {
-  background: white;
-  border-radius: 10px;
+.section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
   padding: 2rem;
-  margin: 1rem 0;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-  transition: transform 0.2s;
+  margin: 1.5rem 0;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--border);
 }
 
-/* 响应式布局 */
 .grid {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-/* 技能标签 */
-.skill-tag {
+.badge {
   display: inline-block;
-  background: var(--primary-color);
-  color: white;
-  padding: 0.3rem 1rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--border);
   border-radius: 20px;
-  margin: 0.3rem;
+  margin: 0.25rem;
   font-size: 0.9em;
+  color: var(--text-secondary);
 }
 
-/* 谷歌风格按钮 */
-.g-button {
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 24px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: opacity 0.2s;
+.contact-bar {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
 }
 
-.g-button:hover {
-  opacity: 0.9;
-}
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 10px;
+  .section {
+    padding: 1.5rem;
   }
 }
 </style>
 
-<!-- 引入Material Icons -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 </div>
 
 <div class="container">
 
-  # <i class="material-icons">person</i> 个人简介
-
-  <div class="card">
-    <div class="grid">
-      <div>
-        <h2>xxx</h2>
-        <p>student</p>
-        <p><i class="material-icons">location_on</i> 北京, 中国</p>
-      </div>
-      <div style="text-align: center">
-        <img src="assets\avatar.jpg" 
-             style="width:150px; height:150px; border-radius:50%" 
-             alt="头像">
-      </div>
-    </div>
+<div class="section" style="text-align: center">
+  <img src="https://via.placeholder.com/120" class="avatar" alt="头像">
+  <h1 style="margin: 1rem 0 0.5rem">xxxx</h1>
+  <p style="color: var(--text-secondary)">学生 | 哈哈</p>
+  <div class="contact-bar">
+    <a href="mailto:contact@qq.com">📧 contact@qq.com</a>
+    <span>|</span>
+    <a href="https://github.com/metriver">🐙 GitHub</a>
   </div>
+</div>
 
-  ## <i class="material-icons">code</i> 技术栈
-
-  <div class="card grid">
+<div class="section">
+  <h2>技术能力</h2>
+  <div class="grid" style="margin-top: 1rem">
     <div>
-      <h3>核心技能</h3>
+      <h3>1</h3>
       <div>
-        <span class="skill-tag">c</span>
-        <span class="skill-tag">。。。</span>
-        <span class="skill-tag">。。。</span>
+        <span class="badge">c</span>
+        <span class="badge">...</span>
+        <span class="badge">.....</span>
       </div>
     </div>
     <div>
-      <h3>其他技能</h3>
+      <h3>2</h3>
       <div>
-        <span class="skill-tag">1</span>
-        <span class="skill-tag">2</span>
-        <span class="skill-tag">3</span>
+        <span class="badge">.</span>
+        <span class="badge">...</span>
+        <span class="badge">.</span>
       </div>
     </div>
   </div>
+</div>
 
-  ## <i class="material-icons">work</i> 项目展示
-
-  <div class="card" id="projects">
-    <!-- JS动态生成项目内容 -->
-  </div>
-
-  <div class="card" style="text-align: center">
-    <button class="g-button" onclick="showContact()">
-      <i class="material-icons">mail</i> 联系我
-    </button>
-  </div>
+<div class="section">
+  <h2>项目经历</h2>
+  <div id="projects" style="margin-top: 1rem"></div>
+</div>
 
 </div>
 
 <script>
-// 项目数据
 const projects = [
   {
-    title: '电商管理平台',
-    tech: ['React', 'Redux', 'Ant Design'],
-    desc: '基于微前端架构的企业级解决方案'
+    title: '123',
+    stack: ['React 18', 'Ant Design 5', 'NestJS'],
+    desc: '123+'
   },
   {
-    title: '数据可视化系统',
-    tech: ['ECharts', 'WebGL', 'Node.js'],
-    desc: '实时数据监控与分析平台'
+    title: '456',
+    stack: ['ECharts', 'WebGL', 'WebSocket'],
+    desc: '456'
   }
 ]
 
-// 动态生成项目
 function renderProjects() {
   const container = document.getElementById('projects')
-  let html = '<h2>代表项目</h2>'
-
-  projects.forEach(proj => {
-    html += `
-      <div style="margin: 1rem 0; padding: 1rem; border-bottom: 1px solid #eee">
-        <h3>${proj.title}</h3>
-        <p>${proj.desc}</p>
-        <div>${proj.tech.map(t => `<span class="skill-tag">${t}</span>`).join('')}</div>
-      </div>
-    `
-  })
-
-  container.innerHTML = html
+  container.innerHTML = projects.map(proj => `
+    <div style="margin: 1.5rem 0; padding-bottom: 1rem; border-bottom: 1px solid var(--border)">
+      <h3 style="margin-bottom: 0.5rem">${proj.title}</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 0.75rem">${proj.desc}</p>
+      <div>${proj.stack.map(t => `<span class="badge">${t}</span>`).join('')}</div>
+    </div>
+  `).join('')
 }
 
-// 联系弹窗
-function showContact() {
-  alert('📧 联系方式: 123@qq.com')
-}
-
-// 初始化
-window.onload = () => {
-  renderProjects()
-  // 添加视差效果
-  document.addEventListener('mousemove', (e) => {
-    const cards = document.querySelectorAll('.card')
-    cards.forEach(card => {
-      const rect = card.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
-      card.style.transform = `
-        perspective(1000px)
-        rotateX(${(y - rect.height/2)/20}deg)
-        rotateY(${-(x - rect.width/2)/20}deg)
-      `
-    })
-  })
-}
+document.addEventListener('DOMContentLoaded', renderProjects)
 </script>
 
 
@@ -1539,7 +1484,7 @@ window.onload = () => {
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年5月9日 17:38:28">2025年5月9日 17:38:28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年5月9日 17:52:56">2025年5月9日 17:52:56</span>
   </span>
 
     
