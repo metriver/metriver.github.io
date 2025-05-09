@@ -1,4 +1,4 @@
-#  
+#  😎
 
 <!-- <center><font class="custom-font ml3">好好学习 天天向上</font></center>
 <script src="https://cdn.statically.io/libs/animejs/2.0.2/anime.min.js"></script> -->
@@ -27,17 +27,19 @@
 
     - [C语言](Learn/Lang-C.md)
     - [Jinan](Essays/Travel/jinan.md)
+    - [script]
 
     
-    
+    <!-- :simple-aboutdotme: -->
 -   :octicons-star-fill-16:{ .lg .middle } __u want to konw__
-<!-- :simple-aboutdotme: -->
+
     ---
 
-    <!-- - [留言板](waline.md) -->
     - [Blogger](blog/index.md)  
-    - [About Me]()
-    <!-- - [:octicons-arrow-right-24: 了解我](about/geren.md)[^see-how-much-I-love-you] -->
+    - [About Me](aboutMe.md)
+<!-- - [留言板](waline.md) -->
+
+<!-- - [:octicons-arrow-right-24: 了解我](about/geren.md)[^see-how-much-I-love-you] -->
 
 </div>
 

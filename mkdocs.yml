@@ -67,7 +67,7 @@ repo_name: Mkdocs-Metriver # 右上角的名字
 nav:
   - Home:
       - index.md
-      - links: link.md
+      # - links: link.md
   - Blog:
       - blog/index.md
   - Learn:
