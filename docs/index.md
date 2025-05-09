@@ -27,10 +27,11 @@
 
     - [C语言](Learn/Lang-C.md)
     - [Jinan](Essays/Travel/jinan.md)
-    - [script]
+    <!-- - [script] -->
 
     
     <!-- :simple-aboutdotme: -->
+    
 -   :octicons-star-fill-16:{ .lg .middle } __u want to konw__
 
     ---
