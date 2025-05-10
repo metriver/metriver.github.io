@@ -102,7 +102,7 @@ extra:
     - icon: fontawesome/regular/envelope #联系方式图标
       link: mailto:<bronze-age@qq.com> #邮件联系方式
     - icon: fontawesome/brands/steam  # 使用 Iconify 格式
-      link: https://store.steampowered.com/
+      link: https://steamcommunity.com/id/Bronze-Age/
     
 #   analytics:
 #     provider: google #谷歌分析

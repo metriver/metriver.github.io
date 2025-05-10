@@ -1,149 +1,116 @@
-<div style="display: none">
-<style>
-:root {
-  --primary: #1a73e8;
-  --surface: #ffffff;
-  --border: #dadce0;
-  --text-primary: #202124;
-  --text-secondary: #5f6368;
-}
+# 关于我 
 
-* {
-  margin: 0;
-  box-sizing: border-box;
-  <!-- font-family: 'Google Sans', 'Noto Sans SC', sans-serif; -->
-}
+<div class="about-container" style="
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+">
 
-body {
-  background: #f8f9fa;
-  line-height: 1.5;
-  color: var(--text-primary);
-  padding: 2rem 1rem;
-}
+![我的头像](assets\avatar.jpg){ .avatar style="
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    flex-shrink: 0;
+" }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-}
+<div class="bio" style="flex: 1; min-width: 300px;">
+<h2 style="margin: 0 0 1rem 0; color: var(--md-primary-fg-color)">王小明</h2>
 
-.section {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 2rem;
-  margin: 1.5rem 0;
-}
+<div class="social-links" style="
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+">
+[<span class="twemoji">{% include ".icons/fontawesome/brands/github.svg" %}</span> GitHub](https://github.com){: target="_blank" .md-button .md-button--primary }
+[<span class="twemoji">{% include ".icons/fontawesome/brands/twitter.svg" %}</span> Twitter](https://twitter.com){: target="_blank" .md-button }
+</div>
 
-.avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 3px solid var(--border);
-}
+<p style="margin: 0; line-height: 1.6;">学生。</p>
+</div>
+</div>
 
-.grid {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
+## 技术栈 {#skills .skill-header}
 
-.badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  margin: 0.25rem;
-  font-size: 0.9em;
-  color: var(--text-secondary);
-}
+<div class="skill-grid" style="
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+">
 
-.contact-bar {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  padding: 1rem;
-}
-
-@media (max-width: 600px) {
-  body {
-    padding: 1rem;
-  }
-  
-  .section {
+<div class="skill-card" style="
+    background: var(--md-code-bg-color);
     padding: 1.5rem;
-  }
-}
-</style>
-
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-</div>
-
-<div class="container">
-
-<div class="section" style="text-align: center">
-  <img src="https://via.placeholder.com/120" class="avatar" alt="头像">
-  <h1 style="margin: 1rem 0 0.5rem">xxxx</h1>
-  <p style="color: var(--text-secondary)">学生 | 哈哈</p>
-  <div class="contact-bar">
-    <a href="mailto:contact@qq.com">📧 contact@qq.com</a>
-    <span>|</span>
-    <a href="https://github.com/metriver">🐙 GitHub</a>
-  </div>
-</div>
-
-<div class="section">
-  <h2>技术能力</h2>
-  <div class="grid" style="margin-top: 1rem">
-    <div>
-      <h3>1</h3>
-      <div>
-        <span class="badge">c</span>
-        <span class="badge">...</span>
-        <span class="badge">.....</span>
-      </div>
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+">
+<h3 style="margin: 0 0 1rem 0;">前台</h3>
+<div class="skill-item" style="margin: 0.5rem 0;">
+    <div style="display: flex; justify-content: space-between;">
+        <span>Vue/React</span>
+        <span>90%</span>
     </div>
-    <div>
-      <h3>2</h3>
-      <div>
-        <span class="badge">.</span>
-        <span class="badge">...</span>
-        <span class="badge">.</span>
-      </div>
+    <div class="progress-bar" style="
+        height: 8px;
+        background: #eee;
+        border-radius: 4px;
+        overflow: hidden;
+    ">
+        <div style="width: 90%; height: 100%; background: #007bff; transition: width 0.3s;"></div>
     </div>
-  </div>
+</div>
+<!-- 更多技能项 -->
 </div>
 
-<div class="section">
-  <h2>项目经历</h2>
-  <div id="projects" style="margin-top: 1rem"></div>
+<div class="skill-card" style="...">
+<h3 style="...">后厨</h3>
+<!-- 类似结构 -->
 </div>
 
 </div>
 
-<script>
-const projects = [
-  {
-    title: '123',
-    stack: ['React 18', 'Ant Design 5', 'NestJS'],
-    desc: '123+'
-  },
-  {
-    title: '456',
-    stack: ['ECharts', 'WebGL', 'WebSocket'],
-    desc: '456'
-  }
-]
+## 精选项目 {#projects}
 
-function renderProjects() {
-  const container = document.getElementById('projects')
-  container.innerHTML = projects.map(proj => `
-    <div style="margin: 1.5rem 0; padding-bottom: 1rem; border-bottom: 1px solid var(--border)">
-      <h3 style="margin-bottom: 0.5rem">${proj.title}</h3>
-      <p style="color: var(--text-secondary); margin-bottom: 0.75rem">${proj.desc}</p>
-      <div>${proj.stack.map(t => `<span class="badge">${t}</span>`).join('')}</div>
-    </div>
-  `).join('')
-}
+<div class="project-grid" style="
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+">
 
-document.addEventListener('DOMContentLoaded', renderProjects)
-</script>
+<div class="project-card" style="
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 8px;
+    overflow: hidden;
+">
+<div style="padding: 1.5rem;">
+<h3 style="margin: 0 0 1rem 0;">123</h3>
+<p style="margin: 0 0 1rem 0;">4567</p>
+<div class="tech-tags" style="
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+">
+    <span style="
+        background: var(--md-primary-fg-color);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8em;
+    ">Vue3</span>
+    <!-- 更多标签 -->
+</div>
+</div>
+<div class="project-footer" style="
+    background: var(--md-code-bg-color);
+    padding: 1rem;
+    text-align: right;
+">
+<a href="#" class="md-button md-button--primary">查看详情 →</a>
+</div>
+</div>
+
+<!-- 更多项目卡片 -->
+
+</div>
