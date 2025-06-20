@@ -73,6 +73,7 @@ nav:
   - Learn:
       - Learn/index.md
       - Language_C_Notes: Learn/Lang-C.md
+      - DataStructure_Notes: Learn/DataStruct.md
       - Papers:
           - 软件与编程: Learn/papers/软件编程试卷.md
   - Tech:
