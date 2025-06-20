@@ -15,12 +15,12 @@
 ### 数组指针 / 指针数组
 ```c
 {
-    int *q1[5]; // 指针数组，q1 是一个数组，数组里是指向 int 的指针
+    int *q1[5]; // 数组指针，q1 是一个数组，数组里是指向 int 的指针
     // 初始化示例：{ &a[1], &a[2], ... }
     // 等价写法：
     int *(q1_equiv[5]);
 
-    int (*q2)[5]; // 数组指针，q2 是一个指针，指向含有 5 个 int 元素的一维数组
+    int (*q2)[5]; // 指针数组，q2 是一个指针，指向含有 [5 个 int 元素]的一维数组
 }
 ```
 
@@ -44,12 +44,20 @@
 
     // 常用的读取字符方式
     int ch;
-    while ((ch = getchar()) != EOF)
+    while ((c = fgetc(in)) != EOF)
     {
         // 处理字符
     }
+    //一行一行读取
+    while(fgets(str,100,in))
+    {
+        //...
+	}
 
     fclose(in);
+    //把标准输入输出直接重定向到文件，这时候可以直接scanf读in  printf写out
+    freopen("filein.txt", "r", stdin);
+	freopen("fileout.txt", "w", stdout);
 }
 ```
 
@@ -178,322 +186,10 @@ if (ch >= '0' && ch <= '9')
 
 后缀表达式 从左往右...
 
----
+### 约瑟夫问题
 
-## 数据结构
+递推公式
 
-### 单向链表
-#### 1. 定义节点
-```c
-typedef struct Node
-{
-    int data;
-    struct Node *next;
-} Node;
-```
-
-#### 2. 初始化链表
-```c
-Node *initList()
-{
-    Node *head = (Node *)malloc(sizeof(Node));
-    head->next = NULL;
-    return head;
-}
-```
-
-#### 3. 添加节点
-```c
-void addNode(Node *head, int data)
-{
-    Node *temp = (Node *)malloc(sizeof(Node));
-    temp->data = data;
-    temp->next = NULL;
-
-    // 查找最后一个节点
-    Node *cur = head;
-    while (cur->next != NULL)
-    {
-        cur = cur->next;
-    }
-
-    // 添加新节点到末尾
-    cur->next = temp;
-}
-```
-
-#### 4. 删除节点
-```c
-void delNode(Node *head, int data)
-{
-    if (head == NULL || head->next == NULL)
-        return; // 空链表或只有头节点
-
-    // 特殊情况：删除头节点
-    if (head->data == data)
-    {
-        Node *temp = head;
-        head = head->next;
-        free(temp);
-        return;
-    }
-
-    Node *cur = head;
-    while (cur->next != NULL && cur->next->data != data)
-    {
-        cur = cur->next;
-    }
-
-    if (cur->next == NULL)
-    {
-        return; // 未找到
-    }
-
-    Node *temp = cur->next;
-    cur->next = temp->next;
-    free(temp);
-}
-```
-
-#### 5. 查找节点
-```c
-Node *findNode(Node *head, int data)
-{
-    Node *cur = head->next; // 从首节点后一个节点开始
-    while (cur != NULL && cur->data != data)
-    {
-        cur = cur->next;
-    }
-    return cur; // 找到返回该节点，否则返回 NULL
-}
-```
+$ f(n,m)=(f(n - 1, m) + m - 1) % n + 1;$
 
 ---
-
-### 栈
-
-#### 顺序栈（多栈）
-```c
-#define MAXSIZE 100
-typedef struct Stack
-{
-    int data[MAXSIZE];
-    int top;
-} Stack;
-
-// 初始化栈
-void initStack(Stack *s) { s->top = -1; }
-
-// 判断栈是否为空
-int isEmpty(Stack *s) { return s->top == -1; }
-
-// 判断栈是否满
-int isFull(Stack *s) { return s->top == MAXSIZE - 1; }
-
-// 入栈
-void push(Stack *s, int value)
-{
-    if (isFull(s)) return;
-    s->data[++s->top] = value;
-}
-
-// 出栈
-int pop(Stack *s)
-{
-    return isEmpty(s) ? -1 : s->data[s->top--];
-}
-
-// 获取栈顶元素
-int peek(Stack *s)
-{
-    return isEmpty(s) ? -1 : s->data[s->top];
-}
-```
-
-#### 单栈实现
-```c
-int stack[MAXSIZE];
-int top = -1;
-
-void push(int value) { stack[++top] = value; }
-int pop() { return stack[top--]; }
-int peek() { return stack[top]; }
-int isEmpty() { return top == -1; }
-int isFull() { return top == MAXSIZE - 1; }
-```
-
----
-
-### 队列
-
-#### 循环队列
-```c
-int queue[MAXSIZE];
-int front = 0;
-int rear = MAXSIZE - 1;
-
-void enqueue(int value)
-{
-    rear = (rear + 1) % MAXSIZE;
-    queue[rear] = value;
-}
-
-int dequeue()
-{
-    front = (front + 1) % MAXSIZE;
-    return queue[front];
-}
-
-int peekQueue() { return queue[(front + 1) % MAXSIZE]; }
-int isQueueEmpty() { return front == rear; }
-int isQueueFull() { return (rear + 1) % MAXSIZE == front; }
-```
-
----
-
-### 树
-
-#### 0.性质&概念
-
-- 非空二叉树(NEDT) 有n个节点 则有n-1个分支
-- NEDT 第i层最多有 $ 2^{i-1} $个结点
-- NEDT 深度h 最多有$2^h-1$个结点
-- NEDT有n个叶结点,有N个度为2的结点,则 n=N+1
-> 拓展:$ n_0 = \sum_{i=1}^m(m-1)n_m   \\m是bt的度 $
-- NEDT n个结点 h=$[log_2^n]+1$(向下取整)
-- 树转二叉树：兄弟节点连线；删除除左孩子外的所有结点连线
-- 树林转二叉树：先把数量中的树转化为二叉树；再从最后的二叉树开始依次作为前一个树的右子树
-- 哈夫曼树：特点：没有度为1的结点  构造最小带权路: 把权看作树林，每次把权最小的两棵树合成一个二叉树，权相加放回树林，重复操作
-- 前序/后序遍历 定根节点 在中序遍历中找到该结点 左右分别为左右子树，重复操作
-#### 1. 定义节点
-```c
-typedef struct TreeNode
-{
-    int data;
-    struct TreeNode *left;
-    struct TreeNode *right;
-} TreeNode;
-```
-
-#### 2. 创建节点
-有时候可以不单独列出 直接放在插入函数中构造newnode
-```c
-TreeNode *createNode(int data)
-{
-    TreeNode *newNode = (TreeNode *)malloc(sizeof(TreeNode));
-    newNode->data = data;
-    newNode->left = newNode->right = NULL;
-    return newNode;
-}
-```
-
-#### 3. 插入节点（二叉搜索树）
-```c
-TreeNode *insertBST(TreeNode *root, int data)
-{
-    if (!root) return createNode(data);
-    if (root->data > data) root->left = insert(root->left, data);
-    else root->right = insert(root->right, data);
-    return root;
-}
-```
-
-#### 4. 查找节点(BST)
-```c
-TreeNode *searchBST(TreeNode *root, int data)
-{
-    if (!root || root->data == data) return root;
-    return search(data < root->data ? root->left : root->right, data);
-}
-```
-
-#### 5.遍历方法
-```c
-// 前序遍历
-void preOrder(TreeNode *root)
-{
-    if (root) {
-        printf("%d ", root->data);
-        preOrder(root->left);
-        preOrder(root->right);
-    }
-}
-
-// 中序遍历
-void inOrder(TreeNode *root)
-{
-    if (root) {
-        inOrder(root->left);
-        printf("%d ", root->data);
-        inOrder(root->right);
-    }
-}
-
-// 后序遍历
-void postOrder(TreeNode *root)
-{
-    if (root) {
-        postOrder(root->left);
-        postOrder(root->right);
-        printf("%d ", root->data);
-    }
-}
-```
-#### 6.对于值为x的有关处理 
-```C
-int op_x(btree *root, datatype x)
-{
-    // null 理解为假 即没有找到x
-    if (root == NULL)
-    {
-        return 1;
-    }
-    // 找到x 
-    if (root->data == x&&hight!=1)
-    {
-        // 处理
-    }
-
-// 如果是BST可以如下操作 
-//    else if (x < root->data)
-//    {
-//        return heightofx(root->lchild, x, hight + 1);
-//    }
-//    else
-//    {
-//        return heightofx(root->rchild, x, hight + 1);
-//    }
-
-    // 左子树寻找
-        int left = op_x(root->lchild, x);
-        if (leftDepth != 1)//此处说明找到了 也就是不假 != data when case null
-        {
-         //    操作
-         return //something
-        }
-    
-    //  右子树寻找 无论找没找到也要返回
-        int right = op_x(root->rchild, x);
-        return //something 
-}
-```
-
-#### 7.叶节点处理
-```C
-void findleaf(btree *root)
-{
-    if (root == NULL)
-    {
-        return;
-    }
-    if (root->lchild == NULL && root->rchild == NULL)
-    {
-        // 处理叶节点
-    }
-    else
-    {
-        findleaf(root->lchild);
-        findleaf(root->rchild);
-    }
-}
-```
