@@ -65,7 +65,7 @@
       <div class="links-content">
          <div class="link-navigation">
             <div class="card">
-               <img class="ava" src="assets/zsy_avatar.jpg" />
+               <img class="ava" src="/assets/zsy_avatar.jpg" />
                <div class="card-header">
                   <div>
                      <a href="http://donotknowsjtu.top " target=“_blank”>donot-know's blog</a>
