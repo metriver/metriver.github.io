@@ -1,7 +1,8 @@
-## Êı¾İ½á¹¹
+# DataStructğŸ™Œ
+## æ•°æ®ç»“æ„
 
-### µ¥ÏòÁ´±í
-#### 1. ¶¨Òå½Úµã
+### å•å‘é“¾è¡¨
+#### 1. å®šä¹‰èŠ‚ç‚¹
 ```c
 typedef struct Node
 {
@@ -10,7 +11,7 @@ typedef struct Node
 } Node;
 ```
 
-#### 2. ³õÊ¼»¯Á´±í
+#### 2. åˆå§‹åŒ–é“¾è¡¨
 ```c
 Node *initList()
 {
@@ -20,7 +21,7 @@ Node *initList()
 }
 ```
 
-#### 3. Ìí¼Ó½Úµã
+#### 3. æ·»åŠ èŠ‚ç‚¹
 ```c
 void addNode(Node *head, int data)
 {
@@ -28,26 +29,26 @@ void addNode(Node *head, int data)
     temp->data = data;
     temp->next = NULL;
 
-    // ²éÕÒ×îºóÒ»¸ö½Úµã
+    // æŸ¥æ‰¾æœ€åä¸€ä¸ªèŠ‚ç‚¹
     Node *cur = head;
     while (cur->next != NULL)
     {
         cur = cur->next;
     }
 
-    // Ìí¼ÓĞÂ½Úµãµ½Ä©Î²
+    // æ·»åŠ æ–°èŠ‚ç‚¹åˆ°æœ«å°¾
     cur->next = temp;
 }
 ```
 
-#### 4. É¾³ı½Úµã
+#### 4. åˆ é™¤èŠ‚ç‚¹
 ```c
 void delNode(Node *head, int data)
 {
     if (head == NULL || head->next == NULL)
-        return; // ¿ÕÁ´±í»òÖ»ÓĞÍ·½Úµã
+        return; // ç©ºé“¾è¡¨æˆ–åªæœ‰å¤´èŠ‚ç‚¹
 
-    // ÌØÊâÇé¿ö£ºÉ¾³ıÍ·½Úµã
+    // ç‰¹æ®Šæƒ…å†µï¼šåˆ é™¤å¤´èŠ‚ç‚¹
     if (head->data == data)
     {
         Node *temp = head;
@@ -64,7 +65,7 @@ void delNode(Node *head, int data)
 
     if (cur->next == NULL)
     {
-        return; // Î´ÕÒµ½
+        return; // æœªæ‰¾åˆ°
     }
 
     Node *temp = cur->next;
@@ -73,24 +74,24 @@ void delNode(Node *head, int data)
 }
 ```
 
-#### 5. ²éÕÒ½Úµã
+#### 5. æŸ¥æ‰¾èŠ‚ç‚¹
 ```c
 Node *findNode(Node *head, int data)
 {
-    Node *cur = head->next; // ´ÓÊ×½ÚµãºóÒ»¸ö½Úµã¿ªÊ¼
+    Node *cur = head->next; // ä»é¦–èŠ‚ç‚¹åä¸€ä¸ªèŠ‚ç‚¹å¼€å§‹
     while (cur != NULL && cur->data != data)
     {
         cur = cur->next;
     }
-    return cur; // ÕÒµ½·µ»Ø¸Ã½Úµã£¬·ñÔò·µ»Ø NULL
+    return cur; // æ‰¾åˆ°è¿”å›è¯¥èŠ‚ç‚¹ï¼Œå¦åˆ™è¿”å› NULL
 }
 ```
 
 ---
 
-### Õ»
+### æ ˆ
 
-#### Ë³ĞòÕ»£¨¶àÕ»£©
+#### é¡ºåºæ ˆï¼ˆå¤šæ ˆï¼‰
 ```c
 #define MAXSIZE 100
 typedef struct Stack
@@ -99,36 +100,36 @@ typedef struct Stack
     int top;
 } Stack;
 
-// ³õÊ¼»¯Õ»
+// åˆå§‹åŒ–æ ˆ
 void initStack(Stack *s) { s->top = -1; }
 
-// ÅĞ¶ÏÕ»ÊÇ·ñÎª¿Õ
+// åˆ¤æ–­æ ˆæ˜¯å¦ä¸ºç©º
 int isEmpty(Stack *s) { return s->top == -1; }
 
-// ÅĞ¶ÏÕ»ÊÇ·ñÂú
+// åˆ¤æ–­æ ˆæ˜¯å¦æ»¡
 int isFull(Stack *s) { return s->top == MAXSIZE - 1; }
 
-// ÈëÕ»
+// å…¥æ ˆ
 void push(Stack *s, int value)
 {
     if (isFull(s)) return;
     s->data[++s->top] = value;
 }
 
-// ³öÕ»
+// å‡ºæ ˆ
 int pop(Stack *s)
 {
     return isEmpty(s) ? -1 : s->data[s->top--];
 }
 
-// »ñÈ¡Õ»¶¥ÔªËØ
+// è·å–æ ˆé¡¶å…ƒç´ 
 int peek(Stack *s)
 {
     return isEmpty(s) ? -1 : s->data[s->top];
 }
 ```
 
-#### µ¥Õ»ÊµÏÖ
+#### å•æ ˆå®ç°
 ```c
 int stack[MAXSIZE];
 int top = -1;
@@ -142,9 +143,9 @@ int isFull() { return top == MAXSIZE - 1; }
 
 ---
 
-### ¶ÓÁĞ
+### é˜Ÿåˆ—
 
-#### Ñ­»·¶ÓÁĞ
+#### å¾ªç¯é˜Ÿåˆ—
 ```c
 int queue[MAXSIZE];
 int front = 0;
@@ -169,21 +170,22 @@ int isQueueFull() { return (rear + 1) % MAXSIZE == front; }
 
 ---
 
-### Ê÷
+### æ ‘
 
-#### 0.ĞÔÖÊ&¸ÅÄî
+#### 0.æ€§è´¨&æ¦‚å¿µ
 
-- ·Ç¿Õ¶ş²æÊ÷(NEDT) ÓĞn¸ö½Úµã ÔòÓĞn-1¸ö·ÖÖ§
-- NEDT µÚi²ã×î¶àÓĞ $ 2^{i-1} $¸ö½áµã
-- NEDT Éî¶Èh ×î¶àÓĞ$2^h-1$¸ö½áµã
-- NEDTÓĞn¸öÒ¶½áµã,ÓĞN¸ö¶ÈÎª2µÄ½áµã,Ôò n=N+1
-> ÍØÕ¹:$ n_0 = \sum_{i=1}^m(m-1)n_m   \\mÊÇbtµÄ¶È $
-- NEDT n¸ö½áµã h=$[log_2^n]+1$(ÏòÏÂÈ¡Õû)
-- Ê÷×ª¶ş²æÊ÷£ºĞÖµÜ½ÚµãÁ¬Ïß£»É¾³ı³ı×óº¢×ÓÍâµÄËùÓĞ½áµãÁ¬Ïß
-- Ê÷ÁÖ×ª¶ş²æÊ÷£ºÏÈ°ÑÊıÁ¿ÖĞµÄÊ÷×ª»¯Îª¶ş²æÊ÷£»ÔÙ´Ó×îºóµÄ¶ş²æÊ÷¿ªÊ¼ÒÀ´Î×÷ÎªÇ°Ò»¸öÊ÷µÄÓÒ×ÓÊ÷
-- ¹ş·òÂüÊ÷£ºÌØµã£ºÃ»ÓĞ¶ÈÎª1µÄ½áµã  ¹¹Ôì×îĞ¡´øÈ¨Â·: °ÑÈ¨¿´×÷Ê÷ÁÖ£¬Ã¿´Î°ÑÈ¨×îĞ¡µÄÁ½¿ÃÊ÷ºÏ³ÉÒ»¸ö¶ş²æÊ÷£¬È¨Ïà¼Ó·Å»ØÊ÷ÁÖ£¬ÖØ¸´²Ù×÷
-- Ç°Ğò/ºóĞò±éÀú ¶¨¸ù½Úµã ÔÚÖĞĞò±éÀúÖĞÕÒµ½¸Ã½áµã ×óÓÒ·Ö±ğÎª×óÓÒ×ÓÊ÷£¬ÖØ¸´²Ù×÷
-#### 1. ¶¨Òå½Úµã
+- éç©ºäºŒå‰æ ‘(NEDT) æœ‰nä¸ªèŠ‚ç‚¹ åˆ™æœ‰n-1ä¸ªåˆ†æ”¯
+- NEDT ç¬¬iå±‚æœ€å¤šæœ‰ $ 2^{i-1} $ä¸ªç»“ç‚¹
+- NEDT æ·±åº¦h æœ€å¤šæœ‰$2^h-1$ä¸ªç»“ç‚¹
+- NEDTæœ‰nä¸ªå¶ç»“ç‚¹,æœ‰Nä¸ªåº¦ä¸º2çš„ç»“ç‚¹,åˆ™ n=N+1
+
+    //æ‹“å±•:$ n_0 = \sum_{i=1}^m(m-1)n_m   \ \ mæ˜¯btçš„åº¦ $
+- NEDT nä¸ªç»“ç‚¹ h=$[log_2^n]+1$(å‘ä¸‹å–æ•´)
+- æ ‘è½¬äºŒå‰æ ‘ï¼šå…„å¼ŸèŠ‚ç‚¹è¿çº¿ï¼›åˆ é™¤é™¤å·¦å­©å­å¤–çš„æ‰€æœ‰ç»“ç‚¹è¿çº¿
+- æ ‘æ—è½¬äºŒå‰æ ‘ï¼šå…ˆæŠŠæ•°é‡ä¸­çš„æ ‘è½¬åŒ–ä¸ºäºŒå‰æ ‘ï¼›å†ä»æœ€åçš„äºŒå‰æ ‘å¼€å§‹ä¾æ¬¡ä½œä¸ºå‰ä¸€ä¸ªæ ‘çš„å³å­æ ‘
+- å“ˆå¤«æ›¼æ ‘ï¼šç‰¹ç‚¹ï¼šæ²¡æœ‰åº¦ä¸º1çš„ç»“ç‚¹  æ„é€ æœ€å°å¸¦æƒè·¯: æŠŠæƒçœ‹ä½œæ ‘æ—ï¼Œæ¯æ¬¡æŠŠæƒæœ€å°çš„ä¸¤æ£µæ ‘åˆæˆä¸€ä¸ªäºŒå‰æ ‘ï¼Œæƒç›¸åŠ æ”¾å›æ ‘æ—ï¼Œé‡å¤æ“ä½œ
+- å‰åº/ååºéå† å®šæ ¹èŠ‚ç‚¹ åœ¨ä¸­åºéå†ä¸­æ‰¾åˆ°è¯¥ç»“ç‚¹ å·¦å³åˆ†åˆ«ä¸ºå·¦å³å­æ ‘ï¼Œé‡å¤æ“ä½œ
+#### 1. å®šä¹‰èŠ‚ç‚¹
 ```c
 typedef struct TreeNode
 {
@@ -193,8 +195,8 @@ typedef struct TreeNode
 } TreeNode;
 ```
 
-#### 2. ´´½¨½Úµã
-ÓĞÊ±ºò¿ÉÒÔ²»µ¥¶ÀÁĞ³ö Ö±½Ó·ÅÔÚ²åÈëº¯ÊıÖĞ¹¹Ôìnewnode
+#### 2. åˆ›å»ºèŠ‚ç‚¹
+æœ‰æ—¶å€™å¯ä»¥ä¸å•ç‹¬åˆ—å‡º ç›´æ¥æ”¾åœ¨æ’å…¥å‡½æ•°ä¸­æ„é€ newnode
 ```c
 TreeNode *createNode(int data)
 {
@@ -205,7 +207,7 @@ TreeNode *createNode(int data)
 }
 ```
 
-#### 3. ²åÈë½Úµã£¨¶ş²æËÑË÷Ê÷£©
+#### 3. æ’å…¥èŠ‚ç‚¹ï¼ˆäºŒå‰æœç´¢æ ‘ï¼‰
 ```c
 TreeNode *insertBST(TreeNode *root, int data)
 {
@@ -216,7 +218,7 @@ TreeNode *insertBST(TreeNode *root, int data)
 }
 ```
 
-#### 4. ²éÕÒ½Úµã(BST)
+#### 4. æŸ¥æ‰¾èŠ‚ç‚¹(BST)
 ```c
 TreeNode *searchBST(TreeNode *root, int data)
 {
@@ -225,9 +227,9 @@ TreeNode *searchBST(TreeNode *root, int data)
 }
 ```
 
-#### 5.±éÀú·½·¨
+#### 5.éå†æ–¹æ³•
 ```c
-// Ç°Ğò±éÀú
+// å‰åºéå†
 void preOrder(TreeNode *root)
 {
     if (root) {
@@ -237,7 +239,7 @@ void preOrder(TreeNode *root)
     }
 }
 
-// ÖĞĞò±éÀú
+// ä¸­åºéå†
 void inOrder(TreeNode *root)
 {
     if (root) {
@@ -247,7 +249,7 @@ void inOrder(TreeNode *root)
     }
 }
 
-// ºóĞò±éÀú
+// ååºéå†
 void postOrder(TreeNode *root)
 {
     if (root) {
@@ -257,22 +259,22 @@ void postOrder(TreeNode *root)
     }
 }
 ```
-#### 6.¶ÔÓÚÖµÎªxµÄÓĞ¹Ø´¦Àí 
+#### 6.å¯¹äºå€¼ä¸ºxçš„æœ‰å…³å¤„ç† 
 ```C
 int op_x(btree *root, datatype x)
 {
-    // null Àí½âÎª¼Ù ¼´Ã»ÓĞÕÒµ½x
+    // null ç†è§£ä¸ºå‡ å³æ²¡æœ‰æ‰¾åˆ°x
     if (root == NULL)
     {
         return 1;
     }
-    // ÕÒµ½x 
+    // æ‰¾åˆ°x 
     if (root->data == x&&hight!=1)
     {
-        // ´¦Àí
+        // å¤„ç†
     }
 
-// Èç¹ûÊÇBST¿ÉÒÔÈçÏÂ²Ù×÷ 
+// å¦‚æœæ˜¯BSTå¯ä»¥å¦‚ä¸‹æ“ä½œ 
 //    else if (x < root->data)
 //    {
 //        return heightofx(root->lchild, x, hight + 1);
@@ -282,21 +284,21 @@ int op_x(btree *root, datatype x)
 //        return heightofx(root->rchild, x, hight + 1);
 //    }
 
-    // ×ó×ÓÊ÷Ñ°ÕÒ
+    // å·¦å­æ ‘å¯»æ‰¾
         int left = op_x(root->lchild, x);
-        if (leftDepth != 1)//´Ë´¦ËµÃ÷ÕÒµ½ÁË Ò²¾ÍÊÇ²»¼Ù != data when case null
+        if (leftDepth != 1)//æ­¤å¤„è¯´æ˜æ‰¾åˆ°äº† ä¹Ÿå°±æ˜¯ä¸å‡ != data when case null
         {
-         //    ²Ù×÷
+         //    æ“ä½œ
          return //something
         }
     
-    //  ÓÒ×ÓÊ÷Ñ°ÕÒ ÎŞÂÛÕÒÃ»ÕÒµ½Ò²Òª·µ»Ø
+    //  å³å­æ ‘å¯»æ‰¾ æ— è®ºæ‰¾æ²¡æ‰¾åˆ°ä¹Ÿè¦è¿”å›
         int right = op_x(root->rchild, x);
         return //something 
 }
 ```
 
-#### 7.Ò¶½Úµã´¦Àí
+#### 7.å¶èŠ‚ç‚¹å¤„ç†
 ```C
 void findleaf(btree *root)
 {
@@ -306,7 +308,7 @@ void findleaf(btree *root)
     }
     if (root->lchild == NULL && root->rchild == NULL)
     {
-        // ´¦ÀíÒ¶½Úµã
+        // å¤„ç†å¶èŠ‚ç‚¹
     }
     else
     {
@@ -315,13 +317,9 @@ void findleaf(btree *root)
     }
 }
 ```
-
-
-### Í¼
----
+### å›¾
 ```C
-//ÁÚ½Ó¾ØÕó
-
+//  é‚»æ¥çŸ©é˜µ
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -333,7 +331,7 @@ typedef struct
     int numVertices;
 } Graph;
 
-// ³õÊ¼»¯Í¼
+// åˆå§‹åŒ–å›¾
 void initGraph(Graph *g, int numVertices)
 {
     g->numVertices = numVertices;
@@ -346,15 +344,15 @@ void initGraph(Graph *g, int numVertices)
     }
 }
 
-// Ìí¼Ó±ß
+// æ·»åŠ è¾¹
 void addEdge(Graph *g, int src, int dest)
 {
     g->adjMatrix[src][dest] = 1;
-    // Èç¹ûÊÇÎŞÏòÍ¼£¬»¹ĞèÒªÌí¼Ó·´Ïò±ß
+    // å¦‚æœæ˜¯æ— å‘å›¾ï¼Œè¿˜éœ€è¦æ·»åŠ åå‘è¾¹
     // g->adjMatrix[dest][src] = 1;
 }
 
-// ´òÓ¡ÁÚ½Ó¾ØÕó
+// æ‰“å°é‚»æ¥çŸ©é˜µ
 void printGraph(Graph *g)
 {
     for (int i = 0; i < g->numVertices; i++)
@@ -367,7 +365,7 @@ void printGraph(Graph *g)
     }
 }
 
-// ÁÚ½Ó±í
+// é‚»æ¥è¡¨
 typedef struct Edge
 {
     int dest;
@@ -386,7 +384,7 @@ typedef struct
     int numVertices;
 } GraphAdjList;
 
-// ³õÊ¼»¯Í¼
+// åˆå§‹åŒ–å›¾
 void initGraphAdjList(GraphAdjList *g, int numVertices)
 {
     g->numVertices = numVertices;
@@ -397,23 +395,23 @@ void initGraphAdjList(GraphAdjList *g, int numVertices)
     }
 }
 
-// Ìí¼Ó±ß
+// æ·»åŠ è¾¹
 void addEdgeAdjList(GraphAdjList *g, int src, int dest)
 {
-    // ´´½¨ĞÂ±ß
+    // åˆ›å»ºæ–°è¾¹
     Edge *newEdge = (Edge *)malloc(sizeof(Edge));
     newEdge->dest = dest;
     newEdge->next = g->vertices[src].edges;
     g->vertices[src].edges = newEdge;
 
-    // Èç¹ûÊÇÎŞÏòÍ¼£¬»¹ĞèÒªÌí¼Ó·´Ïò±ß
+    // å¦‚æœæ˜¯æ— å‘å›¾ï¼Œè¿˜éœ€è¦æ·»åŠ åå‘è¾¹
     newEdge = (Edge *)malloc(sizeof(Edge));
     newEdge->dest = src;
     newEdge->next = g->vertices[dest].edges;
     g->vertices[dest].edges = newEdge;
 }
 
-// ´òÓ¡ÁÚ½Ó±í
+// æ‰“å°é‚»æ¥è¡¨
 void printGraphAdjList(GraphAdjList *g)
 {
     for (int i = 0; i < g->numVertices; i++)
@@ -428,34 +426,34 @@ void printGraphAdjList(GraphAdjList *g)
         printf("NULL\n");
     }
 }
-// É¾³ı±ß
+// åˆ é™¤è¾¹
 void deleteEdgeAdjList(GraphAdjList *g, int src, int dest)
 {
     Edge *current = g->vertices[src].edges;
     Edge *prev = NULL;
 
-    // ²éÕÒÔ´¶¥µãµÄ±ß
+    // æŸ¥æ‰¾æºé¡¶ç‚¹çš„è¾¹
     while (current != NULL && current->dest != dest)
     {
         prev = current;
         current = current->next;
     }
 
-    // Èç¹ûÕÒµ½£¬É¾³ı¸Ã±ß
+    // å¦‚æœæ‰¾åˆ°ï¼Œåˆ é™¤è¯¥è¾¹
     if (current != NULL)
     {
         if (prev == NULL)
         {
-            g->vertices[src].edges = current->next; // É¾³ıÍ·½Úµã
+            g->vertices[src].edges = current->next; // åˆ é™¤å¤´èŠ‚ç‚¹
         }
         else
         {
-            prev->next = current->next; // É¾³ıÖĞ¼ä»òÎ²½Úµã
+            prev->next = current->next; // åˆ é™¤ä¸­é—´æˆ–å°¾èŠ‚ç‚¹
         }
         free(current);
     }
 
-    // É¾³ı·´Ïò±ß£¨Èç¹ûÊÇÎŞÏòÍ¼£©
+    // åˆ é™¤åå‘è¾¹ï¼ˆå¦‚æœæ˜¯æ— å‘å›¾ï¼‰
     current = g->vertices[dest].edges;
     prev = NULL;
 
@@ -469,17 +467,17 @@ void deleteEdgeAdjList(GraphAdjList *g, int src, int dest)
     {
         if (prev == NULL)
         {
-            g->vertices[dest].edges = current->next; // É¾³ıÍ·½Úµã
+            g->vertices[dest].edges = current->next; // åˆ é™¤å¤´èŠ‚ç‚¹
         }
         else
         {
-            prev->next = current->next; // É¾³ıÖĞ¼ä»òÎ²½Úµã
+            prev->next = current->next; // åˆ é™¤ä¸­é—´æˆ–å°¾èŠ‚ç‚¹
         }
         free(current);
     }
 }
 
-// É¾³ı¶¥µã
+// åˆ é™¤é¡¶ç‚¹
 void deleteVertexAdjList(GraphAdjList *g, int vertexId)
 {
     if (vertexId < 0 || vertexId >= g->numVertices)
@@ -487,7 +485,7 @@ void deleteVertexAdjList(GraphAdjList *g, int vertexId)
         return;
     }
 
-    // É¾³ıËùÓĞÓë¸Ã¶¥µãÏà¹ØµÄ±ß
+    // åˆ é™¤æ‰€æœ‰ä¸è¯¥é¡¶ç‚¹ç›¸å…³çš„è¾¹
     for (int i = 0; i < g->numVertices; i++)
     {
         if (i != vertexId)
@@ -496,7 +494,7 @@ void deleteVertexAdjList(GraphAdjList *g, int vertexId)
         }
     }
 
-    // É¾³ı¶¥µã±¾Éí
+    // åˆ é™¤é¡¶ç‚¹æœ¬èº«
     for (int i = vertexId; i < g->numVertices - 1; i++)
     {
         g->vertices[i] = g->vertices[i + 1];
@@ -504,10 +502,10 @@ void deleteVertexAdjList(GraphAdjList *g, int vertexId)
     g->numVertices--;
 }
 
-// Éî¶ÈÓÅÏÈËÑË÷£¨DFS£©
+// æ·±åº¦ä¼˜å…ˆæœç´¢ï¼ˆDFSï¼‰
 void dfs(GraphAdjList *g, int vertexId, int *visited)
 {
-    visited[vertexId] = 1; // ±ê¼ÇÎªÒÑ·ÃÎÊ
+    visited[vertexId] = 1; // æ ‡è®°ä¸ºå·²è®¿é—®
     printf("%d ", vertexId);
 
     Edge *current = g->vertices[vertexId].edges;
@@ -520,19 +518,19 @@ void dfs(GraphAdjList *g, int vertexId, int *visited)
         current = current->next;
     }
 }
-// ¹ã¶ÈÓÅÏÈËÑË÷£¨BFS£©
+// å¹¿åº¦ä¼˜å…ˆæœç´¢ï¼ˆBFSï¼‰
 void bfs(GraphAdjList *g, int startVertex)
 {
-    int visited[MAX_VERTICES] = {0}; // ·ÃÎÊ±ê¼ÇÊı×é
-    int queue[MAX_VERTICES];         // ¶ÓÁĞ
-    int front = 0, rear = -1;        // ¶ÓÁĞÖ¸Õë
+    int visited[MAX_VERTICES] = {0}; // è®¿é—®æ ‡è®°æ•°ç»„
+    int queue[MAX_VERTICES];         // é˜Ÿåˆ—
+    int front = 0, rear = -1;        // é˜Ÿåˆ—æŒ‡é’ˆ
 
-    visited[startVertex] = 1;    // ±ê¼ÇÆğÊ¼¶¥µãÎªÒÑ·ÃÎÊ
-    queue[++rear] = startVertex; // Èë¶Ó
+    visited[startVertex] = 1;    // æ ‡è®°èµ·å§‹é¡¶ç‚¹ä¸ºå·²è®¿é—®
+    queue[++rear] = startVertex; // å…¥é˜Ÿ
 
     while (front <= rear)
     {
-        int currentVertex = queue[front++]; // ³ö¶Ó
+        int currentVertex = queue[front++]; // å‡ºé˜Ÿ
         printf("%d ", currentVertex);
 
         Edge *current = g->vertices[currentVertex].edges;
@@ -540,8 +538,8 @@ void bfs(GraphAdjList *g, int startVertex)
         {
             if (!visited[current->dest])
             {
-                visited[current->dest] = 1;    // ±ê¼ÇÎªÒÑ·ÃÎÊ
-                queue[++rear] = current->dest; // Èë¶Ó
+                visited[current->dest] = 1;    // æ ‡è®°ä¸ºå·²è®¿é—®
+                queue[++rear] = current->dest; // å…¥é˜Ÿ
             }
             current = current->next;
         }
@@ -553,9 +551,9 @@ void bfs(GraphAdjList *g, int startVertex)
 #include <stdio.h>
 #include <stdlib.h>
 
-// ÁÚ½Ó¾ØÕó
+// é‚»æ¥çŸ©é˜µ
 #define MAX_VERTEX_NUM 50
-#define INFINITY 999999 // ÎŞÇî´ó
+#define INFINITY 999999 // æ— ç©·å¤§
 typedef struct edge
 {
     int id;
@@ -570,35 +568,35 @@ typedef struct mst
     int u;
     int v;
     int weight;
-    int id; // ±ßµÄÎ¨Ò»±êÊ¶·û
+    int id; // è¾¹çš„å”¯ä¸€æ ‡è¯†ç¬¦
 } mst;
-mst minst[MAX_VERTEX_NUM]; // ´æ´¢×îĞ¡Éú³ÉÊ÷µÄ±ß
-int mstcount = 0;          // ¼ÇÂ¼×îĞ¡Éú³ÉÊ÷µÄ±ßÊı
+mst minst[MAX_VERTEX_NUM]; // å­˜å‚¨æœ€å°ç”Ÿæˆæ ‘çš„è¾¹
+int mstcount = 0;          // è®°å½•æœ€å°ç”Ÿæˆæ ‘çš„è¾¹æ•°
 
 void cmp(int *a, int *b)
 {
     return (*a - *b);
 }
-// ×îĞ¡Éú³ÉÊ÷ Prim Ëã·¨
+// æœ€å°ç”Ÿæˆæ ‘ Prim ç®—æ³•
 void prim(int start)
 {
-    int lowcost[MAX_VERTEX_NUM];       // ´æ´¢µ±Ç°×îĞ¡È¨Öµ
-    int closest[MAX_VERTEX_NUM];       // ´æ´¢×îĞ¡Éú³ÉÊ÷ÖĞ×î½üµÄ¶¥µã
-    int visited[MAX_VERTEX_NUM] = {0}; // ¼ÇÂ¼¶¥µãÊÇ·ñÒÑ¼ÓÈë×îĞ¡Éú³ÉÊ÷
+    int lowcost[MAX_VERTEX_NUM];       // å­˜å‚¨å½“å‰æœ€å°æƒå€¼
+    int closest[MAX_VERTEX_NUM];       // å­˜å‚¨æœ€å°ç”Ÿæˆæ ‘ä¸­æœ€è¿‘çš„é¡¶ç‚¹
+    int visited[MAX_VERTEX_NUM] = {0}; // è®°å½•é¡¶ç‚¹æ˜¯å¦å·²åŠ å…¥æœ€å°ç”Ÿæˆæ ‘
 
-    // ³õÊ¼»¯Êı×é
+    // åˆå§‹åŒ–æ•°ç»„
     for (int i = 0; i < vertex_count; i++)
     {
         lowcost[i] = INFINITY;
         closest[i] = start;
     }
 
-    // ÆğÊ¼µã¼ÓÈë×îĞ¡Éú³ÉÊ÷
+    // èµ·å§‹ç‚¹åŠ å…¥æœ€å°ç”Ÿæˆæ ‘
     visited[start] = 1;
     lowcost[start] = 0;
-    mstcount = 0; // ÖØÖÃ×îĞ¡Éú³ÉÊ÷±ßÊı
+    mstcount = 0; // é‡ç½®æœ€å°ç”Ÿæˆæ ‘è¾¹æ•°
 
-    // ¸üĞÂÆğÊ¼µãÁÚ½Ó±ßµÄÈ¨Öµ
+    // æ›´æ–°èµ·å§‹ç‚¹é‚»æ¥è¾¹çš„æƒå€¼
     for (int i = 0; i < vertex_count; i++)
     {
         if (graph[start][i].weight > 0)
@@ -608,13 +606,13 @@ void prim(int start)
         }
     }
 
-    // Öğ²½¹¹½¨×îĞ¡Éú³ÉÊ÷
+    // é€æ­¥æ„å»ºæœ€å°ç”Ÿæˆæ ‘
     for (int i = 1; i < vertex_count; i++)
     {
         int min_cost = INFINITY;
         int min_index = -1;
 
-        // ÕÒ³öÎ´¼ÓÈë¶¥µãÖĞÈ¨Öµ×îĞ¡µÄ±ß
+        // æ‰¾å‡ºæœªåŠ å…¥é¡¶ç‚¹ä¸­æƒå€¼æœ€å°çš„è¾¹
         for (int j = 0; j < vertex_count; j++)
         {
             if (!visited[j] && lowcost[j] < min_cost)
@@ -624,7 +622,7 @@ void prim(int start)
             }
         }
 
-        // ½«ÕÒµ½µÄ¶¥µã¼ÓÈë×îĞ¡Éú³ÉÊ÷
+        // å°†æ‰¾åˆ°çš„é¡¶ç‚¹åŠ å…¥æœ€å°ç”Ÿæˆæ ‘
         if (min_index != -1)
         {
             visited[min_index] = 1;
@@ -635,9 +633,9 @@ void prim(int start)
             minst[mstcount].id = graph[closest[min_index]][min_index].id;
             mstcount++;
 
-            lowcost[min_index] = 0; // ÒÑ¼ÓÈë¶¥µãÈ¨ÖµÉèÎª0
+            lowcost[min_index] = 0; // å·²åŠ å…¥é¡¶ç‚¹æƒå€¼è®¾ä¸º0
 
-            // ¸üĞÂĞÂ¼ÓÈë¶¥µãµÄÁÚ½Ó±ß
+            // æ›´æ–°æ–°åŠ å…¥é¡¶ç‚¹çš„é‚»æ¥è¾¹
             for (int k = 0; k < vertex_count; k++)
             {
                 if (!visited[k] && graph[min_index][k].weight > 0 &&
@@ -665,102 +663,101 @@ int main()
         graph[vertex2][vertex1].id = id;
         graph[vertex2][vertex1].weight = weight;
     }
-    prim(0); // ´Ó¶¥µã0¿ªÊ¼¹¹½¨×îĞ¡Éú³ÉÊ÷
+    prim(0); // ä»é¡¶ç‚¹0å¼€å§‹æ„å»ºæœ€å°ç”Ÿæˆæ ‘
     return 0;
 }
 ```
-## Ëã·¨Ä£¿é
-
-### »ØËİ
-```C
+## ç®—æ³•æ¨¡å—
+```c
+// å›æº¯
 #include <stdio.h>
 #include <stdbool.h>
 
-// ÎÊÌâ¹æÄ£ÏŞÖÆ
+// é—®é¢˜è§„æ¨¡é™åˆ¶
 #define MAX_SIZE 100
 
-// È«¾Ö±äÁ¿
-int solution[MAX_SIZE]; // µ±Ç°½â
-bool used[MAX_SIZE];    // ×ÊÔ´Ê¹ÓÃ×´Ì¬£¨¿ÉÑ¡£©
-int depth = 0;          // µ±Ç°½â³¤¶È
+// å…¨å±€å˜é‡
+int solution[MAX_SIZE]; // å½“å‰è§£
+bool used[MAX_SIZE];    // èµ„æºä½¿ç”¨çŠ¶æ€ï¼ˆå¯é€‰ï¼‰
+int depth = 0;          // å½“å‰è§£é•¿åº¦
 
-// »ØËİºËĞÄº¯Êı
+// å›æº¯æ ¸å¿ƒå‡½æ•°
 void backtrack(int step)
 {
-    // 1. ÖÕÖ¹Ìõ¼ş£º¼ì²éµ±Ç°½âÊÇ·ñÍêÕû
+    // 1. ç»ˆæ­¢æ¡ä»¶ï¼šæ£€æŸ¥å½“å‰è§£æ˜¯å¦å®Œæ•´
     if (isComplete(step))
     {
-        processSolution(step); // ´¦ÀíÓĞĞ§½â
+        processSolution(step); // å¤„ç†æœ‰æ•ˆè§£
         return;
     }
 
-    // 2. Éú³ÉºòÑ¡¼¯£¨µ±Ç°²½¿ÉÓÃµÄÑ¡Ïî£©
+    // 2. ç”Ÿæˆå€™é€‰é›†ï¼ˆå½“å‰æ­¥å¯ç”¨çš„é€‰é¡¹ï¼‰
     int candidates[MAX_SIZE];
     int count = generateCandidates(step, candidates);
 
-    // 3. ±éÀúËùÓĞºòÑ¡Ñ¡Ïî
+    // 3. éå†æ‰€æœ‰å€™é€‰é€‰é¡¹
     for (int i = 0; i < count; i++)
     {
         int candidate = candidates[i];
 
-        // 4. ÑéÖ¤ºòÑ¡Ñ¡ÏîµÄ¿ÉĞĞĞÔ
+        // 4. éªŒè¯å€™é€‰é€‰é¡¹çš„å¯è¡Œæ€§
         if (isValid(step, candidate))
         {
-            // 5. ×ö³öÑ¡Ôñ
+            // 5. åšå‡ºé€‰æ‹©
             makeChoice(step, candidate);
 
-            // 6. µİ¹éÉîÈë
+            // 6. é€’å½’æ·±å…¥
             backtrack(step + 1);
 
-            // 7. »ØËİ£º³·ÏúÑ¡Ôñ
+            // 7. å›æº¯ï¼šæ’¤é”€é€‰æ‹©
             undoChoice(step, candidate);
         }
     }
 }
 
-// ===== ĞèÒª¸ù¾İÎÊÌâÊµÏÖµÄº¯Êı =====
+// ===== éœ€è¦æ ¹æ®é—®é¢˜å®ç°çš„å‡½æ•° =====
 bool isComplete(int step)
 {
-    // ÊµÏÖ1£º¼ì²éµ±Ç°½âÊÇ·ñÍêÕû£¨ÖÕÖ¹Ìõ¼ş£©
+    // å®ç°1ï¼šæ£€æŸ¥å½“å‰è§£æ˜¯å¦å®Œæ•´ï¼ˆç»ˆæ­¢æ¡ä»¶ï¼‰
 }
 
 void processSolution(int step)
 {
-    // ÊµÏÖ2£º´¦ÀíÕÒµ½µÄÍêÕû½â£¨´òÓ¡/´æ´¢£©
+    // å®ç°2ï¼šå¤„ç†æ‰¾åˆ°çš„å®Œæ•´è§£ï¼ˆæ‰“å°/å­˜å‚¨ï¼‰
 }
 
 int generateCandidates(int step, int candidates[])
 {
-    // ÊµÏÖ3£ºÉú³Éµ±Ç°²½µÄºòÑ¡Ñ¡Ïî¼¯ºÏ
-    // ·µ»ØºòÑ¡ÊıÁ¿
+    // å®ç°3ï¼šç”Ÿæˆå½“å‰æ­¥çš„å€™é€‰é€‰é¡¹é›†åˆ
+    // è¿”å›å€™é€‰æ•°é‡
 }
 
 bool isValid(int step, int candidate)
 {
-    // ÊµÏÖ4£ºÑéÖ¤ºòÑ¡Ñ¡ÏîµÄ¿ÉĞĞĞÔ
+    // å®ç°4ï¼šéªŒè¯å€™é€‰é€‰é¡¹çš„å¯è¡Œæ€§
 }
 
 void makeChoice(int step, int candidate)
 {
-    // ÊµÏÖ5£º½«ºòÑ¡Ñ¡Ïî¼ÓÈëµ±Ç°½â
+    // å®ç°5ï¼šå°†å€™é€‰é€‰é¡¹åŠ å…¥å½“å‰è§£
 }
 
 void undoChoice(int step, int candidate)
 {
-    // ÊµÏÖ6£º½«ºòÑ¡Ñ¡Ïî´Óµ±Ç°½âÒÆ³ı
+    // å®ç°6ï¼šå°†å€™é€‰é€‰é¡¹ä»å½“å‰è§£ç§»é™¤
 }
 // =================================
 
 int main()
 {
-    // ³õÊ¼»¯ËùÓĞ×´Ì¬
+    // åˆå§‹åŒ–æ‰€æœ‰çŠ¶æ€
     for (int i = 0; i < MAX_SIZE; i++)
     {
         solution[i] = 0;
         used[i] = false;
     }
 
-    // Æô¶¯»ØËİ
+    // å¯åŠ¨å›æº¯
     backtrack(0);
 
     return 0;
