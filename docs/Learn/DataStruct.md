@@ -178,8 +178,9 @@ int isQueueFull() { return (rear + 1) % MAXSIZE == front; }
 - NEDT 第i层最多有 $ 2^{i-1} $个结点
 - NEDT 深度h 最多有$2^h-1$个结点
 - NEDT有n个叶结点,有N个度为2的结点,则 n=N+1
+    
+    拓展:$ n_0 = \sum_{i=1}^m(m-1)n_m $  其中m是bt的度
 
-    //拓展:$ n_0 = \sum_{i=1}^m(m-1)n_m   \ \ m是bt的度 $
 - NEDT n个结点 h=$[log_2^n]+1$(向下取整)
 - 树转二叉树：兄弟节点连线；删除除左孩子外的所有结点连线
 - 树林转二叉树：先把数量中的树转化为二叉树；再从最后的二叉树开始依次作为前一个树的右子树
@@ -318,6 +319,7 @@ void findleaf(btree *root)
 }
 ```
 ### 图
+#### 基础操作
 ```C
 //  邻接矩阵
 #include <stdio.h>
@@ -545,9 +547,9 @@ void bfs(GraphAdjList *g, int startVertex)
         }
     }
 }
-
-// prim-mst
-//   ------------------------
+```
+#### prim-mst
+```C
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -667,9 +669,411 @@ int main()
     return 0;
 }
 ```
+#### 北京地铁查询（dijkstra）
+```C
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAXNUM 512      // 地铁最大站数
+#define MAXLEN 16       // 地铁站名的最大长度
+#define INFINITY 999999 // 无穷大
+
+struct station
+{                       // 车站信息
+    char sname[MAXLEN]; // 车站名
+    int ischange;       // 是否为换乘站，0-否，1-换乘
+};
+struct weight
+{
+    int weight;  // 两个站间的权重，即相差站数，缺省为1
+    int line_id; // 两个顶点所在的线号
+};
+struct station BGvertex[MAXNUM];         // 地铁网络图顶点数组
+struct weight BGweights[MAXNUM][MAXNUM]; // 网络图权重数组，邻接矩阵
+int station_num = 0;                     // 实际地铁总站数
+
+char start_station[MAXLEN]; // 起点站名
+char end_station[MAXLEN];   // 终点站名
+
+int addVertex(struct station st)
+{
+    int i;
+    for (i = 0; i < station_num; i++)
+    {
+        if (strcmp(BGvertex[i].sname, st.sname) == 0)
+        {
+            return i; // 已存在该站，返回其下标
+        }
+    }
+    BGvertex[station_num] = st;                   // 添加新站
+    BGvertex[station_num].ischange = st.ischange; // 设置换乘站标志
+    return station_num++;                         // 返回新站的下标并增加总站数
+}
+
+void initMap()
+{
+    FILE *fp;
+    int i, j, snum, line_id, lnum, v1, v2; // v1为上一个站的下标，v2为当前站的下标
+    struct station st;
+
+    fp = fopen("bgstations.txt", "r");
+
+    fscanf(fp, "%d", &snum);
+
+    for (i = 0; i < snum; i++)
+    {
+        fscanf(fp, "%d %d", &line_id, &lnum);
+        v1 = v2 = -1;
+        for (j = 0; j < lnum; j++)
+        {
+            fscanf(fp, "%s %d", st.sname, &st.ischange);
+            v2 = addVertex(st); // 将该站加到站信息数组中，返回其下标
+            if (v1 != -1)
+            {
+                BGweights[v1][v2].weight = BGweights[v2][v1].weight = 1;
+                BGweights[v1][v2].line_id = BGweights[v2][v1].line_id = line_id;
+            }
+            v1 = v2;
+        }
+    }
+    fclose(fp);
+    return;
+}
+
+int stationIndex(const char *sname)
+{
+    int i;
+    for (i = 0; i < station_num; i++)
+    {
+        if (strcmp(BGvertex[i].sname, sname) == 0)
+        {
+            return i; // 返回站名对应的下标
+        }
+    }
+    return -1; // 未找到该站名
+}
+
+void dijistra(int start, int end)
+{
+    int i, j, k, min, v;
+    int dist[MAXNUM];          // 存储起点到各个顶点的最短距离，例如 dist[i] = 5 表示起点到顶点i的最短距离为5
+    int path[MAXNUM];          // 存储前驱顶点,                例如 path[i] = j 表示顶点i的前驱顶点是j
+    int visited[MAXNUM] = {0}; // 记录顶点是否已访问
+
+    for (i = 0; i < station_num; i++)
+    {
+        dist[i] = INFINITY; // 初始化距离为无穷大
+        path[i] = -1;       // 初始化前驱顶点为-1
+    }
+    dist[start] = 0; // 起点到自身的距离为0
+
+    for (i = 0; i < station_num; i++)
+    {
+        min = INFINITY;
+        v = -1;
+        for (j = 0; j < station_num; j++)
+        {
+            if (!visited[j] && dist[j] < min)
+            {
+                min = dist[j];
+                v = j; // 找到未访问的最小距离顶点
+            }
+        }
+        if (v == -1)
+            break; // 如果没有可访问的顶点，退出循环
+
+        visited[v] = 1; // 标记该顶点已访问
+
+        for (j = 0; j < station_num; j++)
+        {
+            if (!visited[j] && BGweights[v][j].weight > 0) // 有边且未访问
+            {
+                if (dist[v] + BGweights[v][j].weight < dist[j])
+                {
+                    dist[j] = dist[v] + BGweights[v][j].weight;
+                    path[j] = v; // 更新前驱顶点
+                }
+            }
+        }
+    }
+    // 算法结束，下面按照要求输出
+
+    //  // 打印path数组，也就是每一站的前驱站
+    //  for (i = 0; i < station_num; i++)
+    //  {
+    //      printf("path[%d] = %d\n", i, path[i]);
+    //  }
+
+    // 输出最短路径和距离
+    // printf("从 %s 到 %s 的最短路径为：", BGvertex[start].sname, BGvertex[end].sname);
+    if (dist[end] == INFINITY)
+    {
+        printf("FAIL!\n");
+        return;
+    }
+    int route[MAXNUM]; // 存储最短路径的顶点下标，记录顺序为从终点到起点（因为path记录的是前驱顶点）
+    int count = 0;     // 路径顶点计数,包括起点的总站数 即=dist[end]+1
+
+    // 从终点开始回溯到起点，构建最短路径 end->path[end]->path[path[end]]->...->start
+    for (k = end; k != -1; k = path[k])
+    {
+        route[count++] = k;
+    }
+    // 逆序输出路径，因为我们是从终点回溯到起点的
+    // 输出格式：start-line_id(num)-change-line_id(num)-...-end
+    for (i = count - 1; i >= 0; i--)
+    {
+        if (i == count - 1)
+        {
+            printf("%s", BGvertex[route[i]].sname); // 输出起点站名
+        }
+        else if (i == 0)
+        {
+            printf("-%s", BGvertex[route[i]].sname); // 输出终点站名
+        }
+        else
+        {
+            int line_id = BGweights[route[i]][route[i + 1]].line_id;
+            int num = 1;
+            while (i > 0 && BGweights[route[i]][route[i - 1]].line_id == line_id) // 下一个站和当前站在同一条线路上
+            {
+                num++;
+                i--;
+            }
+            // 循环结束后，i指向换乘站
+            // num=当前线路站数
+            printf("-%d(%d)-%s", line_id, num, BGvertex[route[i]].sname); // 输出线路信息和换乘站名
+            if (i - 1 == 0)
+            {
+                printf("-%d(%d)-%s", BGweights[route[i]][route[i - 1]].line_id, 1, BGvertex[route[i - 1]].sname); // 如果是换乘站且前面没有其他站，则输出前一个站名
+                break;
+            }
+        }
+    }
+
+    // printf("\n最短距离为：%d\n", dist[end]);
+
+    // 输出换乘站信息
+    // printf("\n换乘站信息：\n");
+    // for (i = 0; i < count; i++)
+    // {
+    //     if (BGvertex[route[i]].ischange)
+    //     {
+    //         printf("%s ", BGvertex[route[i]].sname);
+    //     }
+    // }
+    // printf("\n");
+    // // 输出线路信息
+    // printf("线路信息：\n");
+    // for (i = 0; i < count - 1; i++)
+    // {
+    //     int line_id = BGweights[route[i]][route[i + 1]].line_id;
+    //     if (line_id > 0)
+    //     {
+    //         printf("%s -> %s: 线路 %d\n", BGvertex[route[i]].sname, BGvertex[route[i + 1]].sname, line_id);
+    //     }
+    // }
+    // printf("\n");
+}
+int main()
+{
+    struct station st;
+    int i, j;
+
+    initMap(); // 初始化地铁网络图
+
+    // printf("地铁站信息：\n");
+    // for (i = 0; i < station_num; i++)
+    // {
+    //     printf("%s %d\n", BGvertex[i].sname, BGvertex[i].ischange);
+    // }
+    int v1, v2;
+    scanf("%s %s", start_station, end_station);
+
+    v1 = stationIndex(start_station);
+    v2 = stationIndex(end_station);
+
+    dijistra(v1, v2);
+
+    return 0;
+}
+```
+
+## 排序
+```C
+#include <stdio.h>
+#include <stdlib.h>
+
+int buf[105];
+int t[105];
+int n;
+int num = 0; // comparison count
+void swap(int *a, int *b)
+{
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+void xuanze()
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        int min = i;
+        for (int j = i + 1; j < n; j++)
+        {
+            num++;
+            if (buf[j] < buf[min])
+                min = j;
+        }
+        if (min != i)
+        {
+            int temp = buf[i];
+            buf[i] = buf[min];
+            buf[min] = temp;
+        }
+    }
+}
+void bubble()
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        int flag = 0;
+        for (int j = 0; j < n - 1 - i; j++)
+        {
+
+            num++;
+            if (buf[j] > buf[j + 1])
+            {
+                flag = 1;
+                int temp = buf[j];
+                buf[j] = buf[j + 1];
+                buf[j + 1] = temp;
+            }
+        }
+        if (!flag)
+            break;
+    }
+}
+// 堆排序
+void adjust(int k[], int i, int n) // 构建堆
+{
+    int j, temp;
+    temp = k[i];
+    j = 2 * i + 1;
+    while (j < n)
+    {
+        if (j < n - 1 && k[j] < k[j + 1])
+            j++;
+        num++;
+        if (temp >= k[j])
+            break;
+        k[(j - 1) / 2] = k[j];
+        j = 2 * j + 1;
+    }
+    k[(j - 1) / 2] = temp;
+}
+void heap(int k[], int n)
+{
+    int i;
+    int temp;
+    for (i = n / 2 - 1; i >= 0; i--)
+        adjust(k, i, n);
+    for (i = n - 1; i >= 1; i--)
+    {
+        temp = k[i];
+        k[i] = k[0];
+        k[0] = temp;
+        adjust(k, 0, i);
+    }
+}
+
+// 二路归并排序
+
+void merge(int l1, int r1, int l2, int r2)
+{
+    int i = l1, j = l2, q = l1;
+    while (i <= r1 && j <= r2)
+    {
+        num++;
+        if (buf[i] <= buf[j])
+            t[q++] = buf[i++];
+        else
+            t[q++] = buf[j++];
+    }
+    while (i <= r1)
+        t[q++] = buf[i++];
+    while (j <= r2)
+        t[q++] = buf[j++];
+    for (int p = l1; p <= r2; p++)
+        buf[p] = t[p];
+}
+void mergesort(int l, int r)
+{
+    int m = (l + r) / 2;
+    if (l < r)
+    {
+        mergesort(l, m);
+        mergesort(m + 1, r);
+        merge(l, m, m + 1, r);
+    }
+}
+
+// 快排
+void quick(int left, int right)
+
+{
+    int i, last;
+    if (left < right)
+    {
+        last = left;
+        for (i = left + 1; i <= right; i++)
+        {
+            num++;
+            if (buf[i] < buf[left])
+                swap(&buf[++last], &buf[i]);
+        }
+        swap(&buf[left], &buf[last]);
+        quick(left, last - 1);
+        quick(last + 1, right);
+    }
+}
+
+int main()
+{
+    int op;
+    scanf("%d%d", &n, &op);
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &buf[i]);
+    }
+    if (op == 1)
+        xuanze();
+    else if (op == 2)
+        bubble();
+    else if (op == 3)
+        heap(buf, n);
+    else if (op == 4)
+        mergesort(0, n - 1);
+    else if (op == 5)
+        quick(0, n - 1);
+
+    for (int i = 0; i < n; i++)
+    {
+        if (i == n - 1)
+            printf("%d\n", buf[i]);
+        else
+            printf("%d ", buf[i]);
+    }
+
+    printf("%d", num);
+    return 0;
+}
+```
 ## 算法模块
+### 回溯
 ```c
-// 回溯
+
 #include <stdio.h>
 #include <stdbool.h>
 
