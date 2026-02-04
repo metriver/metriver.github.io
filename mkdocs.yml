@@ -80,6 +80,7 @@ nav:
       - Tech/index.md
       - Web_construct:
           - obsidian: Tech/Blog_Construct/obsidian&git.md
+      - Git学习: Tech/Git_Learn.md
   # - 留言板: liuyanban.md
   - Essays:
       - Essays/index.md

@@ -26,7 +26,7 @@
     ---
 
     - [C语言](Learn/Lang-C.md)
-    - [Jinan](Essays/Travel/jinan.md)
+    - [Git](Tech/Git_Learn.md)
     <!-- - [script] -->
 
     
