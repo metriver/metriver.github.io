@@ -1246,6 +1246,84 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Git 分支">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        创建、切换、删除
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        合并
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        远程分支
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="远程分支">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同步、推送、跟踪
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        变基
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1793,6 +1871,84 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Git 分支">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        创建、切换、删除
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        合并
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        远程分支
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="远程分支">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同步、推送、跟踪
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        变基
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1845,7 +2001,7 @@
 <p><code>.gitignore</code>：配置忽略文件</p>
 <p><code>git diff</code>：Unstaged</p>
 <p><code>git diff --staged</code></p>
-<p><code>git commit -a -m "message"</code>：提交，-a 选项把所有 Tracked files staged一并提交</p>
+<p><code>git commit -a -m "message"</code>：提交，-a 选项把所有 <strong>Tracked files 暂存</strong>一并提交</p>
 <p><code>git rm</code></p>
 <p><code>git mv</code></p>
 <h3 id="_5">提交历史<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
@@ -1861,6 +2017,42 @@
 <h3 id="_8">打标签<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p><code>git tag</code></p>
 <h2 id="git_1">Git 分支<a class="headerlink" href="#git_1" title="Permanent link">&para;</a></h2>
+<h3 id="_9">创建、切换、删除<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>Git 默认分支为master</p>
+<p><code>git branch &lt;name&gt;</code>：创建分支，指向当前提交对象</p>
+<p><code>Head</code>：特殊指针，指向当前所在分支</p>
+<p><code>git checkout &lt;name&gt;</code>：切换分支，Head指向name，<em>分支切换会改变你工作目录中的文件！</em></p>
+<p><code>git checkout -b &lt;newbranchname&gt;</code>：创建新分支的同时切换过去</p>
+<p><code>git branch -d &lt;name&gt;</code>：删除分支</p>
+<h3 id="_10">合并<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>master
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span>Switched<span class="w"> </span>to<span class="w"> </span>branch<span class="w"> </span><span class="s1">&#39;master&#39;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>$<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span>&lt;name&gt;
+</code></pre></div></td></tr></table></div>
+<p>case1：<em>“ 如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候， 只会简单的将指针向前推进（指针右移），因为这种情况下的合并操作没有需要解决的分歧——这就叫做 “快进（fast-forward）”</em></p>
+<p>case2：“如果<em>开发历史从一个更早的地方开始分叉开来（diverged）。 因为，<code>master</code> 分支所在提交并不是 <code>&lt;name&gt;</code> 分支所在提交的直接祖先，Git 不得不做一些额外的工作。 出现这种情况的时候，Git 会使用两个分支的末端所指的快照以及这两个分支的公共祖先，做一个简单的三方合并。</em>”</p>
+<p>如果在两个不同的分支中，对同一个文件的同一个部分进行了不同的修改，此时 Git 做了合并，但是<strong>没有</strong>自动地创建一个新的合并<strong>提交</strong>。<code>git status</code>查看 unmerged files</p>
+<h3 id="_11">管理<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>$<span class="w"> </span>git<span class="w"> </span>branch
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span>name1
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">  </span>name2
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>*<span class="w"> </span>master
+</code></pre></div></td></tr></table></div>
+<h3 id="_12">远程分支<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://git-scm.com/book/zh/v2/images/remote-branches-1.png" /></p>
+<p><code>origin</code>：远程仓库 <remote></p>
+<p><code>origin/master</code>：指向origin的master分支的指针</p>
+<p><code>master</code>：（上图）远程的master分支、（下图）本地的master分支，这两个master不一定同步。</p>
+<h4 id="_13">同步、推送、跟踪<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p><code>git fetch &lt;remote&gt;</code>：同步remote数据、移动<code>origin/master</code>指针到更新之后的位置。</p>
+<p><code>git push &lt;remote&gt; &lt;branch&gt;</code>：推送分支</p>
+<p><code>git pull</code>：</p>
+<h3 id="_14">变基<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 
 
 
@@ -1883,7 +2075,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年2月4日 23:59:43 CST">2026年2月4日 23:59:43</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年2月5日 17:38:34 CST">2026年2月5日 17:38:34</span>
   </span>
 
     
