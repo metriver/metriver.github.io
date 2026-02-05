@@ -23,10 +23,10 @@
 
 -   :octicons-bookmark-16:{ .lg .middle } __article__
 
-    ---
-
-    - [C语言](Learn/Lang-C.md)
+    --- 
     - [Git](Tech/Git_Learn.md)
+    - [数据结构](Learn/DataStruct.md)
+    
     <!-- - [script] -->
 
     
