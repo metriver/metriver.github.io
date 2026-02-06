@@ -29,7 +29,7 @@
     
     
       
-        <title>Git学习 - Learning River</title>
+        <title>Git_Learn - Learning River</title>
       
     
     
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Git学习
+              Git_Learn
             
           </span>
         </div>
@@ -1966,6 +1966,17 @@
                 
                   
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../tag/#tag:tech" class="md-tag">tech</a>
+      
+    
+  </nav>
+
 
   
     <a href="https://github.com/metriver/metriver.github.io/edit/main/docs/Tech/Git_Learn.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
@@ -1986,6 +1997,23 @@
 
   <h1>Git学习</h1>
 
+<div class="admonition note">
+<p class="admonition-title">学习资源</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">学习资源参考</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p><a href="https://csdiy.wiki/%E5%BF%85%E5%AD%A6%E5%B7%A5%E5%85%B7/Git/">CSDIY-Git</a><br></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">参考网站</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p>简单介绍<a href="https://missing.csail.mit.edu/2020/version-control/">Git tutorial</a><br>
+参考书籍<a href="https://git-scm.com/book/zh/v2">Pro Git</a>(文中图片以及部分斜体内容均为引用此书)<br>
+实战学习<a href="https://learngitbranching.js.org/">Learn Git</a></p>
+</div>
 <h2 id="_1">初始化仓库<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <h3 id="_2">本地仓库初始化<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p><code>git init</code>：创建.git子目录，初始化仓库</p>
@@ -2051,8 +2079,21 @@
 <h4 id="_13">同步、推送、跟踪<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p><code>git fetch &lt;remote&gt;</code>：同步remote数据、移动<code>origin/master</code>指针到更新之后的位置。</p>
 <p><code>git push &lt;remote&gt; &lt;branch&gt;</code>：推送分支</p>
-<p><code>git pull</code>：</p>
+<blockquote>
+<p><code>fetch</code> <code>push</code> 都可以指定分支</p>
+</blockquote>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>$<span class="w"> </span>git<span class="w"> </span>fetch<span class="w"> </span>origin<span class="w"> </span>&lt;remote_branch&gt;:&lt;loc_branch&gt;
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>&lt;loc_branch&gt;:&lt;remote_branch&gt;
+</code></pre></div></td></tr></table></div>
+<p><code>git pull</code>：fetch+merge</p>
+<p><code>git pull --rebase</code>：fetch+rebase</p>
 <h3 id="_14">变基<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p><code>git rebase &lt;branch&gt;</code>：从当前（HEAD）变基到 branch</p>
+<p><code>git rebase &lt;branch&gt; &lt;src&gt;</code>：从 src 变基到 branch</p>
+<blockquote>
+<p>区别与 merge 的合并: <code>git merge &lt;branch&gt;</code> 是把branch和HEAD合并</p>
+</blockquote>
 
 
 
@@ -2075,7 +2116,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年2月5日 17:38:34 CST">2026年2月5日 17:38:34</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年2月7日 00:28:51 CST">2026年2月7日 00:28:51</span>
   </span>
 
     
