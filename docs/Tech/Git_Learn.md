@@ -1,3 +1,19 @@
+---
+title: Git_Learn
+tags:
+  - tech
+---
+
+!!! note "学习资源"
+
+    === "学习资源参考"
+    [CSDIY-Git](https://csdiy.wiki/%E5%BF%85%E5%AD%A6%E5%B7%A5%E5%85%B7/Git/)<br>
+    === "参考网站"
+    简单介绍[Git tutorial](https://missing.csail.mit.edu/2020/version-control/)<br>
+    参考书籍[Pro Git](https://git-scm.com/book/zh/v2)(文中图片以及部分斜体内容均为引用此书)<br>
+    实战学习[Learn Git](https://learngitbranching.js.org/)
+
+
 ## 初始化仓库
 
 ### 本地仓库初始化
@@ -113,11 +129,22 @@ $ git branch
 
 `git push <remote> <branch>`：推送分支
 
-`git pull`：
+> `fetch` `push` 都可以指定分支
+
+```bash
+$ git fetch origin <remote_branch>:<loc_branch>
+$ git push origin <loc_branch>:<remote_branch>
+```
+
+`git pull`：fetch+merge
+
+`git pull --rebase`：fetch+rebase
 
 ### 变基
 
+`git rebase <branch>`：从当前（HEAD）变基到 branch
 
+`git rebase <branch> <src>`：从 src 变基到 branch
 
-
+> 区别与 merge 的合并: `git merge <branch>` 是把branch和HEAD合并
 
