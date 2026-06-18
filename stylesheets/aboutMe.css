@@ -1,0 +1,272 @@
+/* ===== About Me ===== */
+.aboutme-page {
+  width: 100vw; position: relative; left: 50%; right: 50%;
+  margin-left: -50vw; margin-right: -50vw;
+  min-height: 100vh; overflow: hidden; padding: 0;
+}
+.aboutme-page::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(58,123,213,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(99,102,241,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(37,99,168,0.15) 0%, transparent 50%),
+    linear-gradient(135deg, #e8f0fe 0%, #d0e2f7 20%, #b8d4f0 40%, #a0c4e8 60%, #88b4e0 80%, #70a4d8 100%);
+}
+.md-typeset > h1:first-of-type { display: none; }
+
+/* 背景 */
+.aboutme-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.aboutme-mandala { position: absolute; top: -180px; right: -180px; width: 600px; height: 600px; border-radius: 50%; }
+.aboutme-mandala::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: repeating-conic-gradient(from 0deg, transparent 0deg 4deg, rgba(90,130,200,0.12) 4deg 5.5deg); mask-image: radial-gradient(circle, transparent 20%, black 22%, black 98%, transparent 100%); -webkit-mask-image: radial-gradient(circle, transparent 20%, black 22%, black 98%, transparent 100%); }
+.aboutme-mandala::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, transparent 14%, rgba(90,130,200,0.15) 14.5%, transparent 15.5%), radial-gradient(circle, transparent 24%, rgba(90,130,200,0.12) 24.5%, transparent 25.5%), radial-gradient(circle, transparent 34%, rgba(90,130,200,0.10) 34.5%, transparent 35.5%), radial-gradient(circle, transparent 44%, rgba(90,130,200,0.08) 44.5%, transparent 45.5%); }
+.aboutme-bokeh span { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.06) 70%, transparent 100%); }
+.aboutme-bokeh span:nth-child(1)  { width: 100px; height: 100px; top: 8%;  left: 55%; opacity: 0.5; }
+.aboutme-bokeh span:nth-child(2)  { width: 60px;  height: 60px;  top: 20%; left: 72%; opacity: 0.4; }
+.aboutme-bokeh span:nth-child(3)  { width: 150px; height: 150px; top: 2%;  left: 80%; opacity: 0.25; }
+.aboutme-bokeh span:nth-child(4)  { width: 45px;  height: 45px;  top: 50%; left: 10%; opacity: 0.35; }
+.aboutme-bokeh span:nth-child(5)  { width: 80px;  height: 80px;  top: 65%; left: 78%; opacity: 0.3; }
+.aboutme-bokeh span:nth-child(6)  { width: 55px;  height: 55px;  top: 35%; left: 3%;  opacity: 0.3; }
+.aboutme-bokeh span:nth-child(7)  { width: 120px; height: 120px; top: 78%; left: 40%; opacity: 0.2; }
+.aboutme-bokeh span:nth-child(8)  { width: 40px;  height: 40px;  top: 12%; left: 30%; opacity: 0.4; }
+.aboutme-bokeh span:nth-child(9)  { width: 70px;  height: 70px;  top: 60%; left: 20%; opacity: 0.3; }
+.aboutme-bokeh span:nth-child(10) { width: 90px;  height: 90px;  top: 42%; left: 88%; opacity: 0.2; }
+.aboutme-bokeh span:nth-child(11) { width: 35px;  height: 35px;  top: 85%; left: 12%; opacity: 0.35; }
+.aboutme-bokeh span:nth-child(12) { width: 50px;  height: 50px;  top: 30%; left: 45%; opacity: 0.2; }
+
+/* Hero */
+.aboutme-hero { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 560px; margin: 0 auto; padding: 3.5rem 2rem 2.5rem; }
+.aboutme-avatar { width: 160px; height: 160px; border-radius: 50%; padding: 5px; background: linear-gradient(135deg, #3a7bd5, #2563a8); margin-bottom: 1.8rem; box-shadow: 0 8px 30px rgba(37,99,168,0.3); }
+.aboutme-avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #e8f0fe; }
+.aboutme-greeting { font-size: 2.2rem; font-weight: 700; color: #1a2a3a; margin-bottom: 1.4rem; line-height: 1.4; }
+.aboutme-name { color: #2563a8; }
+.aboutme-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.65rem; margin-bottom: 1.5rem; }
+.aboutme-tag { padding: 0.4rem 1.1rem; border-radius: 999px; background: rgba(255,255,255,0.55); color: #3a6b9f; font-size: 0.88rem; font-weight: 500; backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.65); transition: transform 0.2s, box-shadow 0.2s; }
+.aboutme-tag:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(37,99,168,0.12); }
+.aboutme-bio { font-size: 1.1rem; color: #4a6a8a; margin-bottom: 2rem; line-height: 1.6; }
+.aboutme-social { display: flex; gap: 0.9rem; margin-bottom: 2.2rem; }
+.aboutme-social a { display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%; background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.65); transition: all 0.25s ease; backdrop-filter: blur(6px); }
+.aboutme-social a:hover { background: rgba(255,255,255,0.85); transform: translateY(-3px); box-shadow: 0 6px 18px rgba(37,99,168,0.12); }
+.aboutme-social a svg { width: 22px; height: 22px; fill: #3a6b9f; transition: fill 0.25s; }
+.aboutme-social a:hover svg { fill: #2563a8; }
+.aboutme-buttons { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; justify-content: center; }
+.aboutme-btn { display: inline-block; padding: 0.75rem 2rem; border-radius: 999px; font-size: 0.95rem; font-weight: 600; text-decoration: none !important; transition: all 0.25s ease; }
+.aboutme-btn-primary { background: linear-gradient(135deg, #3a7bd5, #2563a8); color: #fff !important; border: 2px solid transparent; box-shadow: 0 4px 16px rgba(37,99,168,0.35); }
+.aboutme-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(37,99,168,0.45); }
+.aboutme-btn-outline { background: transparent; color: #3a6b9f !important; border: 2px solid rgba(58,107,159,0.3); }
+.aboutme-btn-outline:hover { background: rgba(255,255,255,0.4); border-color: rgba(58,107,159,0.5); transform: translateY(-2px); }
+.aboutme-footer { font-size: 0.82rem; color: #6a8aaa; margin: 0 0 2rem; }
+
+/* ===== 行布局 — 每行不同比例 ===== */
+.aboutme-row {
+  position: relative; z-index: 1;
+  max-width: 1000px; margin: 0 auto 1rem;
+  padding: 0 3rem;
+  display: flex; gap: 1rem;
+}
+
+/* 第一行：介绍(大) + 技能(小) */
+.aboutme-row-top .aboutme-card-intro { flex: 1.2; }
+.aboutme-row-top .aboutme-card-skills { flex: 0.8; }
+
+/* 第二行：经历(小) + 箴言(大) */
+.aboutme-row-mid .aboutme-card-careers { flex: 0.7; }
+.aboutme-row-mid .aboutme-card-maxim { flex: 1.3; }
+
+/* 地图单独占满 */
+.aboutme-card-map { flex: 1; }
+/* 个人信息 + 特长各占一半 */
+.aboutme-card-selfinfo { flex: 1; }
+.aboutme-card-buff { flex: 1; }
+
+/* 斜杠行 */
+.aboutme-row:last-child { padding-bottom: 4rem; }
+
+/* ===== 卡片通用 ===== */
+.aboutme-card {
+  border-radius: 24px; padding: 1.6rem;
+  position: relative; overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.aboutme-card:hover { transform: translateY(-4px); }
+.aboutme-card-tips { font-size: 0.78rem; color: #6a8aaa; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.aboutme-card-main-title { font-size: 1.4rem; font-weight: 700; color: #1a2a3a; display: block; margin-bottom: 1.2rem; }
+
+/* 介绍卡片 */
+.aboutme-card-intro {
+  background: linear-gradient(135deg, #e3f0ff 0%, #b3d8ff 100%);
+  box-shadow: 0 0 10px 0 rgba(63,94,216,0.15);
+}
+.aboutme-card-intro:hover { box-shadow: 0 6px 24px rgba(63,94,216,0.18); }
+.aboutme-intro-text { font-size: 0.95rem; color: #3a5a8a; line-height: 1.8; margin: 0; }
+
+/* 技能 */
+.aboutme-card-skills {
+  background: linear-gradient(135deg, #e3f0ff 0%, #b3d8ff 100%);
+  box-shadow: 0 0 10px 0 rgba(63,94,216,0.15);
+}
+.aboutme-card-skills:hover { box-shadow: 0 6px 24px rgba(63,94,216,0.18); }
+.aboutme-skills-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.aboutme-skill-item { width: 56px; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; transition: transform 0.2s; }
+.aboutme-skill-item:hover { transform: translateY(-3px); }
+.aboutme-skill-item img { width: 40px; height: 40px; border-radius: 10px; object-fit: contain; background: rgba(255,255,255,0.8); padding: 6px; border: 1px solid rgba(63,94,216,0.1); }
+.aboutme-skill-item span { font-size: 0.65rem; font-weight: 600; color: #3a5a8a; white-space: nowrap; }
+
+/* 经历 */
+.aboutme-card-careers {
+  background: linear-gradient(135deg, #e3f0ff 0%, #b3d8ff 100%);
+  box-shadow: 0 0 10px 0 rgba(63,94,216,0.15);
+}
+.aboutme-card-careers:hover { box-shadow: 0 6px 24px rgba(63,94,216,0.18); }
+.aboutme-careers-group { margin-bottom: 1.5rem; }
+.aboutme-career-item { display: flex; align-items: center; gap: 0.6rem; }
+.aboutme-career-dot { width: 12px; height: 12px; border-radius: 50%; }
+.aboutme-career-info { display: flex; flex-direction: column; }
+.aboutme-career-name { font-size: 0.95rem; font-weight: 600; color: #1a2a3a; }
+.aboutme-career-time { font-size: 0.75rem; color: #6a8aaa; margin-top: 0.15rem; }
+
+/* 时间轴 */
+.aboutme-edu-bar-wrap { padding: 0.5rem; }
+.aboutme-edu-bg { position: relative; height: 4px; background: rgba(63,94,216,0.12); border-radius: 2px; margin-bottom: 2.8rem; }
+.aboutme-edu-fg { position: absolute; top: 0; left: 0; height: 100%; background: linear-gradient(90deg, #4facfe, #00f2fe); border-radius: 2px; }
+.aboutme-edu-node {
+  position: absolute; top: -6px; white-space: nowrap;
+  display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+}
+.aboutme-edu-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: #fff; border: 3px solid #4facfe; box-sizing: border-box;
+}
+.aboutme-edu-dot-now {
+  background: #4facfe; border-color: #fff;
+  box-shadow: 0 0 0 3px rgba(79,172,254,0.3);
+}
+.aboutme-edu-node span {
+  font-size: 0.72rem; color: #6a8aaa; display: block;
+}
+.aboutme-edu-label {
+  font-size: 0.65rem !important; color: #8a9ab0 !important;
+  font-weight: 600; letter-spacing: 0.03em;
+}
+.aboutme-edu-start { left: 0; transform: translateX(-50%); }
+.aboutme-edu-current { transform: translateX(-50%); }
+.aboutme-edu-current span:first-of-type { color: #2563a8; font-weight: 700; }
+.aboutme-edu-end { right: 0; transform: translateX(50%); }
+
+/* 箴言 */
+.aboutme-card-maxim {
+  background: linear-gradient(135deg, #3a7bd5, #2563a8, #5b6abf, #7c5fc7, #6366f1);
+  box-shadow: 0 0 10px 0 rgba(63,94,216,0.2); border: none;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.aboutme-card-maxim:hover { box-shadow: 0 6px 24px rgba(63,94,216,0.25); }
+.aboutme-card-maxim .aboutme-card-tips { color: rgba(255,255,255,0.6); }
+.aboutme-maxim-title {
+  font-size: 1.4rem; font-weight: 700; line-height: 1.7;
+  background: linear-gradient(135deg, #fff 0%, #c8d6f0 50%, #a0b8e0 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* 地图 — 白天用蓝色渐变 */
+.aboutme-card-map {
+  background: linear-gradient(135deg, #e3f0ff 0%, #b3d8ff 100%);
+  box-shadow: 0 0 10px 0 rgba(63,94,216,0.15); padding: 0; overflow: hidden;
+}
+.aboutme-card-map:hover { box-shadow: 0 6px 24px rgba(63,94,216,0.18); }
+.aboutme-map-title { display: block; padding: 1.4rem 1.4rem 0.8rem; font-size: 1rem; color: #4a6a8a; }
+.aboutme-map-title b { color: #1a2a3a; font-weight: 700; }
+.aboutme-map-title { display: block; padding: 1.4rem 1.4rem 0.8rem; font-size: 1rem; color: #4a6a8a; }
+.aboutme-map-title b { color: #1a2a3a; font-weight: 700; }
+.aboutme-map { width: 100%; height: 200px; }
+.aboutme-map .leaflet-container { width: 100%; height: 100%; border-radius: 0 0 24px 24px; }
+.aboutme-map .aboutme-marker { background: linear-gradient(135deg, #3a7bd5, #2563a8); color: #fff; padding: 5px 12px; border-radius: 8px; font-size: 13px; font-weight: 600; white-space: nowrap; box-shadow: 0 2px 8px rgba(37,99,168,0.3); border: 2px solid #fff; position: relative; text-align: center; }
+.aboutme-map .aboutme-marker::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid #2563a8; }
+
+/* 个人信息 — 横向排列 */
+.aboutme-card-selfinfo {
+  background: linear-gradient(135deg, #e3f0ff 0%, #b3d8ff 100%);
+  box-shadow: 0 0 10px 0 rgba(63,94,216,0.15);
+  display: flex; flex-direction: column; gap: 0.8rem; justify-content: center;
+}
+.aboutme-card-selfinfo:hover { box-shadow: 0 6px 24px rgba(63,94,216,0.18); }
+.aboutme-selfinfo-row { display: flex; justify-content: space-between; align-items: baseline; }
+.aboutme-selfinfo-label { font-size: 0.9rem; color: #4a6a8a; }
+.aboutme-selfinfo-value { font-size: 1.6rem; font-weight: 800; }
+
+/* 特长 */
+.aboutme-card-buff {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  box-shadow: 0 0 10px 0 rgba(252,182,159,0.2);
+}
+.aboutme-card-buff:hover { box-shadow: 0 6px 24px rgba(252,182,159,0.25); }
+.aboutme-card-buff .aboutme-card-tips { color: #8a6a5a; }
+.aboutme-buff-title { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.95rem; font-weight: 600; color: #5a3a2a; }
+.aboutme-buff-title span { background: rgba(255,255,255,0.5); padding: 0.3rem 0.7rem; border-radius: 8px; }
+.aboutme-buff-icon { position: absolute; bottom: 1rem; right: 1.2rem; font-size: 2.5rem; opacity: 0.2; }
+
+/* 斜杠 */
+.aboutme-card-slash { background: rgba(255,255,255,0.3); border: 1px dashed rgba(37,99,168,0.15); text-align: center; }
+.aboutme-slash { font-size: 1.1rem; font-weight: 700; color: #6a8aaa; letter-spacing: 0.15em; }
+
+
+/* ===== 暗色模式 ===== */
+[data-md-color-scheme="slate"] .aboutme-page::before { background: radial-gradient(ellipse at 20% 50%, rgba(30,60,120,0.2) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(50,50,120,0.15) 0%, transparent 50%), linear-gradient(135deg, #0f1a2e 0%, #162038 25%, #1a2840 50%, #1e3048 75%, #223858 100%); }
+[data-md-color-scheme="slate"] .aboutme-greeting { color: #e0e8f4; }
+[data-md-color-scheme="slate"] .aboutme-name { color: #5b9bd5; }
+[data-md-color-scheme="slate"] .aboutme-tag { background: rgba(255,255,255,0.06); color: #8ab4e0; border-color: rgba(255,255,255,0.1); }
+[data-md-color-scheme="slate"] .aboutme-bio { color: #8ab4e0; }
+[data-md-color-scheme="slate"] .aboutme-social a { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
+[data-md-color-scheme="slate"] .aboutme-social a svg { fill: #8ab4e0; }
+[data-md-color-scheme="slate"] .aboutme-social a:hover svg { fill: #5b9bd5; }
+[data-md-color-scheme="slate"] .aboutme-btn-outline { color: #8ab4e0 !important; border-color: rgba(138,180,224,0.25); }
+[data-md-color-scheme="slate"] .aboutme-footer { color: #5a7a9a; }
+[data-md-color-scheme="slate"] .aboutme-avatar img { border-color: #1a2840; }
+
+/* 暗色卡片 */
+[data-md-color-scheme="slate"] .aboutme-card-intro,
+[data-md-color-scheme="slate"] .aboutme-card-skills,
+[data-md-color-scheme="slate"] .aboutme-card-careers {
+  background: linear-gradient(135deg, #232946 0%, #121826 100%); box-shadow: 0 0 10px 0 #1218266a;
+}
+[data-md-color-scheme="slate"] .aboutme-card-intro .aboutme-card-tips,
+[data-md-color-scheme="slate"] .aboutme-card-skills .aboutme-card-tips,
+[data-md-color-scheme="slate"] .aboutme-card-skills .aboutme-card-main-title,
+[data-md-color-scheme="slate"] .aboutme-card-careers .aboutme-card-tips,
+[data-md-color-scheme="slate"] .aboutme-card-careers .aboutme-card-main-title,
+[data-md-color-scheme="slate"] .aboutme-card-careers .aboutme-career-name { color: #ccd6f6; }
+[data-md-color-scheme="slate"] .aboutme-intro-text { color: #8892b0; }
+[data-md-color-scheme="slate"] .aboutme-skill-item img { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.06); }
+[data-md-color-scheme="slate"] .aboutme-skill-item span { color: #8892b0; }
+[data-md-color-scheme="slate"] .aboutme-edu-bg { background: rgba(255,255,255,0.06); }
+[data-md-color-scheme="slate"] .aboutme-edu-node { color: #5a7a9a; }
+
+[data-md-color-scheme="slate"] .aboutme-card-map { background: linear-gradient(135deg, #1a2840 0%, #0f1a2e 100%); }
+[data-md-color-scheme="slate"] .aboutme-map-title { color: #8892b0; }
+[data-md-color-scheme="slate"] .aboutme-map-title b { color: #ccd6f6; }
+[data-md-color-scheme="slate"] .aboutme-map-title { color: #8892b0; }
+[data-md-color-scheme="slate"] .aboutme-map-title b { color: #ccd6f6; }
+[data-md-color-scheme="slate"] .aboutme-card-selfinfo { background: linear-gradient(135deg, #232946 0%, #121826 100%); box-shadow: 0 0 10px 0 #1218266a; }
+[data-md-color-scheme="slate"] .aboutme-selfinfo-label { color: #5a7a9a; }
+
+/* 暗色特长 — 深蓝紫替代暖色 */
+[data-md-color-scheme="slate"] .aboutme-card-buff {
+  background: linear-gradient(135deg, #1e2a4a 0%, #2a1a3a 100%);
+  box-shadow: 0 0 10px 0 rgba(90,60,120,0.15);
+}
+[data-md-color-scheme="slate"] .aboutme-card-buff .aboutme-card-tips { color: #8a7ab0; }
+[data-md-color-scheme="slate"] .aboutme-buff-title { color: #c4b8e0; }
+[data-md-color-scheme="slate"] .aboutme-buff-title span { background: rgba(255,255,255,0.06); }
+
+[data-md-color-scheme="slate"] .aboutme-card-slash { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.06); }
+[data-md-color-scheme="slate"] .aboutme-slash { color: #5a7a9a; }
+
+
+/* ===== 响应式 ===== */
+@media (max-width: 700px) {
+  .aboutme-hero { padding: 2rem 1rem 1.5rem; }
+  .aboutme-greeting { font-size: 1.6rem; }
+  .aboutme-avatar { width: 130px; height: 130px; }
+  .aboutme-buttons { flex-direction: column; align-items: center; }
+  .aboutme-btn { width: 220px; text-align: center; }
+  .aboutme-row { flex-direction: column; padding: 0 1rem; }
+  .aboutme-mandala { width: 350px; height: 350px; top: -100px; right: -100px; }
+}
