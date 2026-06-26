@@ -373,7 +373,7 @@
               
                 
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1228,337 +1228,197 @@
   <h1>首页</h1>
 
 <style>
-/* ===== 全局重置 ===== */
 .md-grid { max-width: 100%; }
 .md-content__inner { padding: 0 !important; }
 .md-typeset > h1:first-of-type { display: none; }
-.md-sidebar, .md-tabs { display: none !important; }
+.md-sidebar { display: none !important; }
 .md-main__inner { max-width: 100%; padding: 0; }
 
-/* ===== Hero — 全宽背景 ===== */
-.home-hero {
-  width: 100vw;
-  position: relative; left: 50%; right: 50%;
-  margin-left: -50vw; margin-right: -50vw;
-  text-align: center;
-  padding: 4.5rem 2rem 3rem;
-  background: linear-gradient(180deg, rgba(58,123,213,0.06) 0%, transparent 100%);
-}
-.home-emoji { font-size: 3.2rem; display: block; margin-bottom: 0.8rem; }
-.home-title { font-size: 2.2rem; font-weight: 800; color: #1a2a3a; margin-bottom: 0.3rem; }
-.home-title em {
-  font-style: normal;
-  background: linear-gradient(135deg, #3a7bd5, #6366f1);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-.home-motto { font-size: 1rem; color: #8a9ab0; letter-spacing: 0.2em; margin: 0; }
-
-/* ===== 主体容器 ===== */
-.home-body {
-  max-width: 920px; width: 100%;
+.home-page {
+  min-height: 80vh;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 2.5rem 2rem 3rem;
-  display: flex; gap: 2.5rem;
-  align-items: flex-start;
+  padding: 3rem 2rem 2rem;
+  animation: fadeIn 0.5s ease both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== 左栏 — 文章列表 ===== */
-.home-left { flex: 1; min-width: 0; }
+/* Hero */
+.home-hero { text-align: center; margin-bottom: 3rem; }
+.home-hero-name {
+  font-size: 2.2rem; font-weight: 800;
+  letter-spacing: -0.02em; line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+.home-hero-name em {
+  font-style: normal;
+  background: linear-gradient(135deg, #4f6cf7, #7c5bf5);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.home-hero-motto {
+  font-size: 0.9rem;
+  color: #64748b;
+  letter-spacing: 0.2em;
+  margin: 0 0 0.6rem;
+}
+.home-hero-bio {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
 
-/* ===== 右栏 — 热力图 + 导航 + 统计 ===== */
-.home-right { width: 280px; flex-shrink: 0; }
-
-/* ===== 区块标题 ===== */
-.section-title {
-  font-size: 0.78rem; font-weight: 700; color: #6a8aaa;
-  text-transform: uppercase; letter-spacing: 0.1em;
+/* Section */
+.sec-head {
+  font-size: 0.72rem; font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
   margin-bottom: 1rem;
-  display: flex; align-items: center; gap: 0.5rem;
-}
-.section-title::after {
-  content: ''; flex: 1; height: 1px;
-  background: linear-gradient(90deg, rgba(58,123,213,0.12), transparent);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(100,116,139,0.15);
 }
 
-/* ===== 文章列表 ===== */
-.post-list { display: flex; flex-direction: column; }
+/* Post list */
+.post-list { margin-bottom: 2.5rem; }
 .post-item {
   display: flex; align-items: baseline; gap: 1rem;
-  padding: 0.7rem 0;
-  border-bottom: 1px solid rgba(58,123,213,0.06);
+  padding: 0.65rem 0 0.65rem 1rem;
   text-decoration: none !important;
+  border-left: 2px solid transparent;
   transition: all 0.2s;
 }
-.post-item:last-child { border-bottom: none; }
-.post-item:hover { padding-left: 0.4rem; }
+.post-item:hover {
+  border-left-color: #4f6cf7;
+  padding-left: 1.3rem;
+}
 .post-item-title {
-  flex: 1; font-size: 0.95rem; font-weight: 600; color: #2a4a6a;
+  flex: 1; font-size: 0.92rem; font-weight: 600;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.post-item:hover .post-item-title { color: #2563a8; }
-.post-item-date { font-size: 0.75rem; color: #a0b8d0; white-space: nowrap; }
-.post-empty { color: #a0b8d0; font-size: 0.85rem; padding: 1rem 0; }
+.post-item-date {
+  font-size: 0.72rem; color: #64748b;
+  white-space: nowrap;
+}
+.post-empty { color: #64748b; font-size: 0.85rem; padding: 1rem 0; }
 
-/* ===== 热力图 — 右栏自适应 ===== */
-.heatmap-box {
-  background: rgba(58,123,213,0.03);
-  border: 1px solid rgba(58,123,213,0.08);
-  border-radius: 14px;
-  padding: 1rem;
+/* Stats */
+.stats-row {
+  display: flex; gap: 2rem; justify-content: center;
+  flex-wrap: wrap;
   margin-bottom: 2rem;
 }
-.heatmap-grid {
-  display: flex; gap: 2px;
-  width: 100%;
+.stats-item { text-align: center; }
+.stats-val {
+  font-size: 1.2rem; font-weight: 800;
+  font-variant-numeric: tabular-nums;
 }
-.heatmap-week {
-  flex: 1;
-  display: flex; flex-direction: column; gap: 2px;
+.stats-lbl {
+  font-size: 0.62rem; color: #64748b;
+  text-transform: uppercase; letter-spacing: 0.06em;
 }
-.heatmap-cell {
-  width: 100%; aspect-ratio: 1; border-radius: 2px;
-  background: #e8eff8; transition: transform 0.15s;
-}
-.heatmap-cell:hover { transform: scale(1.4); z-index: 1; }
-.heatmap-cell.l1 { background: #b8d4f0; }
-.heatmap-cell.l2 { background: #7bade0; }
-.heatmap-cell.l3 { background: #3a7bd5; }
-.heatmap-cell.l4 { background: #1a4a90; }
-.heatmap-foot {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-top: 0.6rem; font-size: 0.65rem; color: #a0b8d0;
-}
-.heatmap-legend { display: flex; align-items: center; gap: 0.25rem; }
-.heatmap-legend-cell { width: 10px; height: 10px; border-radius: 2px; }
 
-/* ===== 导航 — 右栏竖排 ===== */
-.nav-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 2rem; }
-.nav-list a {
-  display: flex; align-items: center; gap: 0.6rem;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid rgba(58,123,213,0.06);
-  text-decoration: none !important;
-  color: #3a5a8a; font-size: 0.88rem; font-weight: 500;
-  transition: all 0.2s;
-}
-.nav-list a:last-child { border-bottom: none; }
-.nav-list a:hover { color: #2563a8; padding-left: 0.3rem; }
-.nav-icon { font-size: 1rem; width: 1.4rem; text-align: center; }
-.nav-arrow { margin-left: auto; color: #b0c4d8; font-size: 0.75rem; transition: transform 0.2s; }
-.nav-list a:hover .nav-arrow { transform: translateX(3px); color: #2563a8; }
-
-/* ===== 统计 — 右栏 ===== */
-.stats-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;
-}
-.stats-card {
-  background: rgba(58,123,213,0.03);
-  border: 1px solid rgba(58,123,213,0.06);
-  border-radius: 10px;
-  padding: 0.7rem 0.8rem; text-align: center;
-}
-.stats-card-icon { font-size: 1.1rem; margin-bottom: 0.15rem; }
-.stats-card-value { font-size: 1rem; font-weight: 800; color: #2563a8; }
-.stats-card-label { font-size: 0.6rem; color: #8a9ab0; text-transform: uppercase; letter-spacing: 0.05em; }
-
-/* ===== 页脚 ===== */
+/* Footer */
 .home-footer {
-  text-align: center; padding: 2rem;
-  font-size: 0.75rem; color: #b0c4d8;
+  text-align: center;
+  padding-top: 2rem;
+  font-size: 0.72rem; color: #64748b;
+  border-top: 1px solid rgba(100,116,139,0.1);
 }
 
-/* ===== 暗色 ===== */
-[data-md-color-scheme="slate"] .home-hero { background: linear-gradient(180deg, rgba(20,30,50,0.6) 0%, transparent 100%); }
-[data-md-color-scheme="slate"] .home-title { color: #e0e8f4; }
-[data-md-color-scheme="slate"] .home-motto { color: #5a7a9a; }
-[data-md-color-scheme="slate"] .section-title { color: #5a7a9a; }
-[data-md-color-scheme="slate"] .section-title::after { background: linear-gradient(90deg, rgba(91,155,213,0.1), transparent); }
-[data-md-color-scheme="slate"] .post-item { border-color: rgba(255,255,255,0.04); }
-[data-md-color-scheme="slate"] .post-item-title { color: #8ab4e0; }
-[data-md-color-scheme="slate"] .post-item:hover .post-item-title { color: #5b9bd5; }
-[data-md-color-scheme="slate"] .post-item-date { color: #5a7a9a; }
-[data-md-color-scheme="slate"] .heatmap-box { background: rgba(20,30,50,0.3); border-color: rgba(255,255,255,0.05); }
-[data-md-color-scheme="slate"] .heatmap-cell { background: #1a2840; }
-[data-md-color-scheme="slate"] .heatmap-cell.l1 { background: #1e3a5a; }
-[data-md-color-scheme="slate"] .heatmap-cell.l2 { background: #2a5a8a; }
-[data-md-color-scheme="slate"] .heatmap-cell.l3 { background: #3a7bd5; }
-[data-md-color-scheme="slate"] .heatmap-cell.l4 { background: #5b9bd5; }
-[data-md-color-scheme="slate"] .heatmap-foot { color: #5a7a9a; }
-[data-md-color-scheme="slate"] .nav-list a { color: #8ab4e0; border-color: rgba(255,255,255,0.04); }
-[data-md-color-scheme="slate"] .nav-list a:hover { color: #5b9bd5; }
-[data-md-color-scheme="slate"] .nav-arrow { color: #3a5068; }
-[data-md-color-scheme="slate"] .nav-list a:hover .nav-arrow { color: #5b9bd5; }
-[data-md-color-scheme="slate"] .stats-card { background: rgba(20,30,50,0.3); border-color: rgba(255,255,255,0.04); }
-[data-md-color-scheme="slate"] .stats-card-value { color: #5b9bd5; }
-[data-md-color-scheme="slate"] .stats-card-label { color: #5a7a9a; }
-[data-md-color-scheme="slate"] .home-footer { color: #3a5068; }
-
-/* ===== 响应式 ===== */
-@media (max-width: 700px) {
-  .home-hero { padding: 3rem 1.2rem 2rem; }
-  .home-title { font-size: 1.6rem; }
-  .home-body { flex-direction: column; padding: 1.5rem 1.2rem 2rem; gap: 2rem; }
-  .home-right { width: 100%; }
+@media (max-width: 600px) {
+  .home-page { padding: 2rem 1.2rem 1.5rem; }
+  .home-hero-name { font-size: 1.6rem; }
+  .stats-row { gap: 1.2rem; }
 }
 </style>
 
-<!-- ===== Hero ===== -->
-<div class="home-hero">
-  <span class="home-emoji">😎</span>
-  <div class="home-title">Hi, I'm <em>Metriver</em></div>
-  <p class="home-motto">好好学习 天天向上</p>
-</div>
+<div class="home-page">
 
-<!-- ===== 左右分栏 ===== -->
-<div class="home-body">
-
-  <!-- 左栏：文章 -->
-  <div class="home-left">
-    <div class="section-title">📰 Recent Posts</div>
-    <div class="post-list" id="recent-list">
-      <div class="post-empty">Loading...</div>
-    </div>
+  <div class="home-hero">
+    <div class="home-hero-name">Hi, I'm <em>Metriver</em></div>
+    <p class="home-hero-motto">好好学习 天天向上</p>
+    <p class="home-hero-bio">A space for continuous learning, creation, and sharing. Exploring tech and life.</p>
   </div>
 
-  <!-- 右栏：热力图 + 导航 + 统计 -->
-  <div class="home-right">
-
-    <!-- 热力图 -->
-    <div class="section-title">📊 Activity</div>
-    <div class="heatmap-box">
-      <div class="heatmap-grid" id="heatmap"></div>
-      <div class="heatmap-foot">
-        <div class="heatmap-legend">
-          <span>Less</span>
-          <div class="heatmap-legend-cell" style="background:#e8eff8"></div>
-          <div class="heatmap-legend-cell" style="background:#b8d4f0"></div>
-          <div class="heatmap-legend-cell" style="background:#7bade0"></div>
-          <div class="heatmap-legend-cell" style="background:#3a7bd5"></div>
-          <div class="heatmap-legend-cell" style="background:#1a4a90"></div>
-          <span>More</span>
-        </div>
-        <span id="heatmap-count"></span>
-      </div>
-    </div>
-
-    <!-- 导航 -->
-    <div class="section-title">🔗 Navigate</div>
-    <div class="nav-list">
-      <a href="blog/"><span class="nav-icon">📝</span>Blog<span class="nav-arrow">→</span></a>
-      <a href="aboutMe/"><span class="nav-icon">👤</span>About Me<span class="nav-arrow">→</span></a>
-      <a href="Learn/"><span class="nav-icon">📚</span>Learn<span class="nav-arrow">→</span></a>
-      <a href="Tech/"><span class="nav-icon">🔧</span>Tech<span class="nav-arrow">→</span></a>
-      <a href="link/"><span class="nav-icon">🔗</span>Friends<span class="nav-arrow">→</span></a>
-    </div>
-
-    <!-- 统计 -->
-    <div class="section-title">📈 Stats</div>
-    <div class="stats-grid">
-      <div class="stats-card"><div class="stats-card-icon">📄</div><div class="stats-card-value" id="stat-pages">--</div><div class="stats-card-label">Pages</div></div>
-      <div class="stats-card"><div class="stats-card-icon">✏️</div><div class="stats-card-value" id="stat-words">--</div><div class="stats-card-label">Words</div></div>
-      <div class="stats-card"><div class="stats-card-icon">💻</div><div class="stats-card-value" id="stat-codes">--</div><div class="stats-card-label">Code</div></div>
-      <div class="stats-card"><div class="stats-card-icon">⏱️</div><div class="stats-card-value" id="stat-time">--</div><div class="stats-card-label">Uptime</div></div>
-    </div>
-
+  <div class="sec-head">Recent Posts</div>
+  <div class="post-list" id="recent-list">
+    <div class="post-empty">Loading...</div>
   </div>
-</div>
 
-<div class="home-footer">© 2024-2025 Metriver · Learning River</div>
+  <div class="sec-head">Stats</div>
+  <div class="stats-row">
+    <div class="stats-item"><div class="stats-val" id="stat-pages">--</div><div class="stats-lbl">Pages</div></div>
+    <div class="stats-item"><div class="stats-val" id="stat-words">--</div><div class="stats-lbl">Words</div></div>
+    <div class="stats-item"><div class="stats-val" id="stat-codes">--</div><div class="stats-lbl">Code</div></div>
+    <div class="stats-item"><div class="stats-val" id="stat-time">--</div><div class="stats-lbl">Uptime</div></div>
+  </div>
+
+  <div class="home-footer">© 2024-2025 Metriver · Learning River</div>
+</div>
 
 <script>
-// ===== 热力图 =====
-function renderHeatmap(dateMap, days) {
-  var today = new Date(); today.setHours(0,0,0,0);
-  var el = document.getElementById('heatmap');
-  var startDate = new Date(today);
-  startDate.setDate(startDate.getDate() - days + 1);
-  startDate.setDate(startDate.getDate() - startDate.getDay());
-  var weeks = Math.ceil((days + startDate.getDay()) / 7);
-  var total = 0, html = '';
-  for (var w = 0; w < weeks; w++) {
-    html += '<div class="heatmap-week">';
-    for (var dd = 0; dd < 7; dd++) {
-      var dt = new Date(startDate);
-      dt.setDate(dt.getDate() + w * 7 + dd);
-      var y = dt.getFullYear();
-      var m = String(dt.getMonth()+1).padStart(2,'0');
-      var d = String(dt.getDate()).padStart(2,'0');
-      var key = y+'-'+m+'-'+d;
-      var count = dateMap[key] || 0;
-      total += count;
-      var cls = count === 0 ? '' : count <= 2 ? 'l1' : count <= 5 ? 'l2' : count <= 10 ? 'l3' : 'l4';
-      var opacity = dt > today ? ' style="opacity:0.2"' : '';
-      html += '<div class="heatmap-cell '+cls+'" title="'+key+': '+count+' commits"'+opacity+'></div>';
-    }
-    html += '</div>';
-  }
-  el.innerHTML = html;
-  var countEl = document.getElementById('heatmap-count');
-  if (countEl) countEl.textContent = total + ' commits / ' + days + 'd';
-}
-
-// 优先: commits.json (构建时 hook 生成，纯静态文件，零性能开销)
-// fallback: sitemap lastmod
-fetch('commits.json').then(function(r){
-  if (!r.ok) throw 0; return r.json();
-}).then(function(data){
-  if (Object.keys(data).length > 0) { renderHeatmap(data, 30); return; }
-  throw 0;
-}).catch(function(){
-  fetch('sitemap.xml').then(function(r){return r.text()}).then(function(x){
-    var dm = {};
-    new DOMParser().parseFromString(x,'text/xml').querySelectorAll('lastmod').forEach(function(m){
-      var d = m.textContent.substring(0,10); dm[d] = (dm[d]||0) + 1;
-    });
-    renderHeatmap(dm, 30);
-  }).catch(function(){ renderHeatmap({}, 30); });
-});
-
-// ===== 文章 & 统计 =====
-fetch('sitemap.xml').then(function(r){return r.text()}).then(function(x){
-  var d = new DOMParser().parseFromString(x,'text/xml');
+fetch('sitemap.xml').then(function(r) {
+  if (!r.ok) throw 0; return r.text();
+}).then(function(xml) {
+  var doc = new DOMParser().parseFromString(xml, 'text/xml');
   var pages = [];
-  d.querySelectorAll('url').forEach(function(u){
+  doc.querySelectorAll('url').forEach(function(u) {
     var loc = u.querySelector('loc'), mod = u.querySelector('lastmod');
     if (!loc) return;
-    var path = new URL(loc.textContent).pathname;
-    if (path.includes('/tags/') || path.includes('/blog/page/')) return;
+    try { var path = new URL(loc.textContent).pathname; } catch(e) { return; }
+    if (path.indexOf('/tags/') !== -1 || path.indexOf('/blog/page/') !== -1) return;
     pages.push({ path: path, date: mod ? mod.textContent : '' });
   });
 
-  // 最近文章
-  var posts = pages.filter(function(p){
-    return /^\/blog\/\d{4}\/\d{2}\/\d{2}\//.test(p.path) && p.date;
-  }).sort(function(a,b){ return b.date.localeCompare(a.date); });
+  /* Blog posts only */
+  var posts = [];
+  for (var i = 0; i < pages.length; i++) {
+    var p = pages[i];
+    if (!p.date) continue;
+    var segs = p.path.replace(/\/+$/, '').split('/');
+    if (segs[1] === 'blog' && segs.length >= 6 &&
+        /^\d{4}$/.test(segs[2]) && /^\d{2}$/.test(segs[3]) && /^\d{2}$/.test(segs[4])) {
+      posts.push(p);
+    }
+  }
+  posts.sort(function(a, b) { return b.date.localeCompare(a.date); });
 
   var html = '';
-  posts.slice(0, 5).forEach(function(p){
-    var slug = p.path.replace(/^\/blog\/\d{4}\/\d{2}\/\d{2}\//, '').replace(/\/$/, '');
+  posts.slice(0, 5).forEach(function(p) {
+    var slug = p.path.replace(/^\/blog\/\d{4}\/\d{2}\/\d{2}\//, '').replace(/\/+$/, '');
     try { slug = decodeURIComponent(slug); } catch(e) {}
     slug = slug.replace(/-/g, ' ');
-    html += '<a class="post-item" href="'+p.path+'">'
-      + '<span class="post-item-title">'+slug+'</span>'
-      + '<span class="post-item-date">'+p.date.substring(0,10)+'</span></a>';
+    html += '<a class="post-item" href="' + p.path + '">'
+      + '<span class="post-item-title">' + slug + '</span>'
+      + '<span class="post-item-date">' + p.date.substring(0, 10) + '</span></a>';
   });
   document.getElementById('recent-list').innerHTML = html || '<div class="post-empty">No posts yet</div>';
 
-  // 统计
+  /* Stats */
   document.getElementById('stat-pages').textContent = pages.length;
   var t0 = new Date('2024-06-27T10:21:33').getTime();
-  function tick(){ document.getElementById('stat-time').textContent = Math.floor((Date.now()-t0)/864e5)+'d'; }
+  function tick() { document.getElementById('stat-time').textContent = Math.floor((Date.now() - t0) / 864e5) + 'd'; }
   tick(); setInterval(tick, 60000);
-
-  var wc=0, cc=0, n=0, lim=Math.min(pages.length, 20);
-  if(lim) for(var i=0;i<lim;i++) (function(u){
-    fetch(u).then(function(r){return r.text()}).then(function(h){
-      var t=document.createElement('div'); t.innerHTML=h;
-      var a=t.querySelector('.md-content__inner')||t;
-      wc+=(a.textContent||'').replace(/\s/g,'').length;
-      cc+=a.querySelectorAll('pre code').length;
-      if(++n===lim){document.getElementById('stat-words').textContent=wc.toLocaleString();document.getElementById('stat-codes').textContent=cc;}
-    }).catch(function(){n++;});
-  })(pages[i].path);
-}).catch(function(){});
+  var wc = 0, cc = 0, n = 0, lim = Math.min(pages.length, 20);
+  if (lim) for (var k = 0; k < lim; k++) (function(u) {
+    fetch(u).then(function(r) { return r.text(); }).then(function(h) {
+      var t = document.createElement('div'); t.innerHTML = h;
+      var a = t.querySelector('.md-content__inner') || t;
+      wc += (a.textContent || '').replace(/\s/g, '').length;
+      cc += a.querySelectorAll('pre code').length;
+      if (++n === lim) {
+        document.getElementById('stat-words').textContent = wc.toLocaleString();
+        document.getElementById('stat-codes').textContent = cc;
+      }
+    }).catch(function() { n++; });
+  })(pages[k].path);
+}).catch(function() {});
 </script>
 
 
@@ -1674,8 +1534,8 @@ fetch('sitemap.xml').then(function(r){return r.text()}).then(function(x){
       
       
     
-    <a href="https://steamcommunity.com/id/Bronze-Age/" target="_blank" rel="noopener" title="steamcommunity.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M504 256c0 137-111.2 248-248.4 248-113.8 0-209.6-76.3-239-180.4l95.2 39.3c6.4 32.1 34.9 56.4 68.9 56.4 39.2 0 71.9-32.4 70.2-73.5l84.5-60.2c52.1 1.3 95.8-40.9 95.8-93.5 0-51.6-42-93.5-93.7-93.5s-93.7 42-93.7 93.5v1.2L184.6 279c-15.5-.9-30.7 3.4-43.5 12.1L8 236.1C18.2 108.4 125.1 8 255.6 8 392.8 8 504 119 504 256M163.7 384.3l-30.5-12.6c5.6 11.6 15.3 20.8 27.2 25.8 26.9 11.2 57.8-1.6 69-28.4 5.4-13 5.5-27.3.1-40.3S214 305.6 201 300.2c-12.9-5.4-26.7-5.2-38.9-.6l31.5 13c19.8 8.2 29.2 30.9 20.9 50.7-8.3 19.9-31 29.2-50.8 21m173.8-254.5a62.3 62.3 0 1 1 0 124.6 62.3 62.3 0 1 1 0-124.6m.1 109a46.8 46.8 0 1 0 0-93.6 46.8 46.8 0 1 0 0 93.6"/></svg>
+    <a href="https://www.xiaohongshu.com/user/profile/608e30c500000000010048f7" target="_blank" rel="noopener" title="www.xiaohongshu.com" class="md-social__link">
+      <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Xiaohongshu</title><path fill="#ff2442" d="M22.405 9.879c.002.016.01.02.07.019h.725a.797.797 0 0 0 .78-.972.794.794 0 0 0-.884-.618.795.795 0 0 0-.692.794c0 .101-.002.666.001.777zm-11.509 4.808c-.203.001-1.353.004-1.685.003a2.528 2.528 0 0 1-.766-.126.025.025 0 0 0-.03.014L7.7 16.127a.025.025 0 0 0 .01.032c.111.06.336.124.495.124.66.01 1.32.002 1.981 0 .01 0 .02-.006.023-.015l.712-1.545a.025.025 0 0 0-.024-.036zM.477 9.91c-.071 0-.076.002-.076.01a.834.834 0 0 0-.01.08c-.027.397-.038.495-.234 3.06-.012.24-.034.389-.135.607-.026.057-.033.042.003.112.046.092.681 1.523.787 1.74.008.015.011.02.017.02.008 0 .033-.026.047-.044.147-.187.268-.391.371-.606.306-.635.44-1.325.486-1.706.014-.11.021-.22.03-.33l.204-2.616.022-.293c.003-.029 0-.033-.03-.034zm7.203 3.757a1.427 1.427 0 0 1-.135-.607c-.004-.084-.031-.39-.235-3.06a.443.443 0 0 0-.01-.082c-.004-.011-.052-.008-.076-.008h-1.48c-.03.001-.034.005-.03.034l.021.293c.076.982.153 1.964.233 2.946.05.4.186 1.085.487 1.706.103.215.223.419.37.606.015.018.037.051.048.049.02-.003.742-1.642.804-1.765.036-.07.03-.055.003-.112zm3.861-.913h-.872a.126.126 0 0 1-.116-.178l1.178-2.625a.025.025 0 0 0-.023-.035l-1.318-.003a.148.148 0 0 1-.135-.21l.876-1.954a.025.025 0 0 0-.023-.035h-1.56c-.01 0-.02.006-.024.015l-.926 2.068c-.085.169-.314.634-.399.938a.534.534 0 0 0-.02.191.46.46 0 0 0 .23.378.981.981 0 0 0 .46.119h.59c.041 0-.688 1.482-.834 1.972a.53.53 0 0 0-.023.172.465.465 0 0 0 .23.398c.15.092.342.12.475.12l1.66-.001c.01 0 .02-.006.023-.015l.575-1.28a.025.025 0 0 0-.024-.035zm-6.93-4.937H3.1a.032.032 0 0 0-.034.033c0 1.048-.01 2.795-.01 6.829 0 .288-.269.262-.28.262h-.74c-.04.001-.044.004-.04.047.001.037.465 1.064.555 1.263.01.02.03.033.051.033.157.003.767.009.938-.014.153-.02.3-.06.438-.132.3-.156.49-.419.595-.765.052-.172.075-.353.075-.533.002-2.33 0-4.66-.007-6.991a.032.032 0 0 0-.032-.032zm11.784 6.896c0-.014-.01-.021-.024-.022h-1.465c-.048-.001-.049-.002-.05-.049v-4.66c0-.072-.005-.07.07-.07h.863c.08 0 .075.004.075-.074V8.393c0-.082.006-.076-.08-.076h-3.5c-.064 0-.075-.006-.075.073v1.445c0 .083-.006.077.08.077h.854c.075 0 .07-.004.07.07v4.624c0 .095.008.084-.085.084-.37 0-1.11-.002-1.304 0-.048.001-.06.03-.06.03l-.697 1.519s-.014.025-.008.036c.006.01.013.008.058.008 1.748.003 3.495.002 5.243.002.03-.001.034-.006.035-.033v-1.539zm4.177-3.43c0 .013-.007.023-.02.024-.346.006-.692.004-1.037.004-.014-.002-.022-.01-.022-.024-.005-.434-.007-.869-.01-1.303 0-.072-.006-.071.07-.07l.733-.003c.041 0 .081.002.12.015.093.025.16.107.165.204.006.431.002 1.153.001 1.153zm2.67.244a1.953 1.953 0 0 0-.883-.222h-.18c-.04-.001-.04-.003-.042-.04V10.21c0-.132-.007-.263-.025-.394a1.823 1.823 0 0 0-.153-.53 1.533 1.533 0 0 0-.677-.71 2.167 2.167 0 0 0-1-.258c-.153-.003-.567 0-.72 0-.07 0-.068.004-.068-.065V7.76c0-.031-.01-.041-.046-.039H17.93s-.016 0-.023.007c-.006.006-.008.012-.008.023v.546c-.008.036-.057.015-.082.022h-.95c-.022.002-.028.008-.03.032v1.481c0 .09-.004.082.082.082h.913c.082 0 .072.128.072.128V11.19s.003.117-.06.117h-1.482c-.068 0-.06.082-.06.082v1.445s-.01.068.064.068h1.457c.082 0 .076-.006.076.079v3.225c0 .088-.007.081.082.081h1.43c.09 0 .082.007.082-.08v-3.27c0-.029.006-.035.033-.035l2.323-.003c.098 0 .191.02.28.061a.46.46 0 0 1 .274.407c.008.395.003.79.003 1.185 0 .259-.107.367-.33.367h-1.218c-.023.002-.029.008-.028.033.184.437.374.871.57 1.303a.045.045 0 0 0 .04.026c.17.005.34.002.51.003.15-.002.517.004.666-.01a2.03 2.03 0 0 0 .408-.075c.59-.18.975-.698.976-1.313v-1.981c0-.128-.01-.254-.034-.38 0 .078-.029-.641-.724-.998z"/></svg>
     </a>
   
 </div>
