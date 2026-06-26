@@ -1,3 +1,4 @@
 .claude/
 site/
 *.swp
+__pycache__/

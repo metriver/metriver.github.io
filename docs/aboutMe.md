@@ -1,5 +1,5 @@
 ---
-title: 关于我
+title: About Me
 hide:
   - footer
   - feedback
@@ -152,6 +152,9 @@ hide:
       </span>
       <div class="aboutme-buff-icon">✨</div>
     </div>
+    <div class="aboutme-card aboutme-card-photo">
+      <img src="https://s2.loli.net/2024/10/29/LBCWQRr1vaFlmSp.jpg" alt="Beijing">
+    </div>
   </div>
 
   <!-- 斜杠 -->
@@ -167,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var mapEl = document.getElementById('aboutme-map');
   if (!mapEl || typeof L === 'undefined') return;
 
-  var lightTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { maxZoom: 19 });
+  var lightTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', { maxZoom: 19 });
   var darkTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 19 });
 
   function isDark() {

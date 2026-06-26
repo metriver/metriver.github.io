@@ -7,3 +7,9 @@ body {
     /* Screen version */
     /* font-family: "LXGW WenKai Screen", sans-serif; */
 }
+
+/* 博客列表标题加大 */
+.md-post__content h2 a.toclink {
+    font-size: 1.5rem;
+    font-weight: 700;
+}

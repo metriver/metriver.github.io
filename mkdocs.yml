@@ -67,9 +67,9 @@ repo_name: Mkdocs-Metriver # 右上角的名字
 nav:
   - Home:
       - index.md
-      # - links: link.md
   - Blog:
       - blog/index.md
+  - About Me: aboutMe.md
   - Learn:
       - Learn/index.md
       - Language_C_Notes: Learn/Lang-C.md
@@ -81,16 +81,7 @@ nav:
       - Web_construct:
           - obsidian: Tech/Blog_Construct/obsidian&git.md
       - Git学习: Tech/Git_Learn.md
-  # - 留言板: liuyanban.md
-  - Essays:
-      - Essays/index.md
-      - Travel:
-          - JiNan: Essays/Travel/jinan.md
-          - Beijing: Essays/Travel/beijing.md
-          - xian: Essays/Travel/xian.md
-      - Nag:
-          - Talk1: Essays/Nag/talk1.md
-          - Talk2: Essays/Nag/talk2.md
+      - 路由器: Tech/路由器.md
   - Tags: tag.md
 
 copyright: Copyright &copy; 2023~2025 Metriver All Rights Reserved. # 左下角的版权声明
@@ -123,6 +114,7 @@ plugins:
       exclude:
         - index.md
         - link.md
+        - commits.json
       strict: false
 
   - blog: #博客配置
@@ -209,5 +201,5 @@ extra_css:
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css #字体
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@1.0.0/style.css  #字体
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css  #字体
-# hooks:
-#   - docs/overrides/hooks/socialmedia.py
+hooks:
+  - docs/overrides/hooks/gen_commits.py
